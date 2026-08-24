@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**convert_batch**](ConvertApi.md#convert_batch) | **POST** /v1/convert/batch | Convert many documents in one request, results streamed
 [**convert_document**](ConvertApi.md#convert_document) | **POST** /v1/convert | Convert a PDF or image to ZPL
 [**convert_html**](ConvertApi.md#convert_html) | **POST** /v1/convert/html | Convert an HTML label design to ZPL
+[**convert_zpl_to_html**](ConvertApi.md#convert_zpl_to_html) | **POST** /v1/convert/zpl-html | Decompile ZPL into editable HTML
 
 
 # **convert_batch**
@@ -117,19 +118,6 @@ Convert a PDF or image to ZPL
 
 Each page becomes its own ^GFA command (Zebra ACS run-length compression). PDFs up to 16 pages.
 
-**PHP** (`composer require stripyhorse/stripyhorse-php`):
-```php
-$convert = new StripyHorse\Api\ConvertApi(null, $config);
-$result = $convert->convertDocument(new SplFileObject('shipping-label.pdf'), preset: '4x6');
-foreach ($result->getPages() as $page) { sendToPrinter($page->getZpl()); }
-```
-
-**curl**:
-```bash
-curl https://api.stripyhorse.io/v1/convert \
-  -H "X-Api-Key: sh_live_YOUR_KEY" -F file=@shipping-label.pdf -F preset=4x6
-```
-
 ### Example
 
 * Api Key Authentication (headerKey):
@@ -232,7 +220,7 @@ Name | Type | Description  | Notes
 
 Convert an HTML label design to ZPL
 
-Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type="code128|qr" data="…">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`). Unsupported types or unencodable data fail loudly.
+Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type="code128|qr" data="…">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.
 
 **PHP** (`composer require stripyhorse/stripyhorse-php`):
 ```php
@@ -304,6 +292,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**HtmlOutputBody**](HtmlOutputBody.md)
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **convert_zpl_to_html**
+> ZplHTMLOutputBody convert_zpl_to_html(zpl_html_input_body)
+
+Decompile ZPL into editable HTML
+
+The migration path for legacy ZPL templates: text, boxes and Code128/QR barcodes become editable HTML in the dialect convertHtml accepts; unsupported elements (raster graphics, exotic barcodes) are embedded as positioned images so the layout survives. Round-tripping through convertHtml preserves scannable barcodes.
+
+### Example
+
+* Api Key Authentication (headerKey):
+* Bearer (sh_live_…) Authentication (bearerKey):
+
+```python
+import stripyhorse
+from stripyhorse.models.zpl_html_input_body import ZplHTMLInputBody
+from stripyhorse.models.zpl_html_output_body import ZplHTMLOutputBody
+from stripyhorse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stripyhorse.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stripyhorse.Configuration(
+    host = "https://api.stripyhorse.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: headerKey
+configuration.api_key['headerKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['headerKey'] = 'Bearer'
+
+# Configure Bearer authorization (sh_live_…): bearerKey
+configuration = stripyhorse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with stripyhorse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stripyhorse.ConvertApi(api_client)
+    zpl_html_input_body = stripyhorse.ZplHTMLInputBody() # ZplHTMLInputBody | 
+
+    try:
+        # Decompile ZPL into editable HTML
+        api_response = api_instance.convert_zpl_to_html(zpl_html_input_body)
+        print("The response of ConvertApi->convert_zpl_to_html:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ConvertApi->convert_zpl_to_html: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **zpl_html_input_body** | [**ZplHTMLInputBody**](ZplHTMLInputBody.md)|  | 
+
+### Return type
+
+[**ZplHTMLOutputBody**](ZplHTMLOutputBody.md)
 
 ### Authorization
 

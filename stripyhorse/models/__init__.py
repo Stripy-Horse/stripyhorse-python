@@ -33,4 +33,6 @@ from stripyhorse.models.rendered_label import RenderedLabel
 from stripyhorse.models.state_output_body import StateOutputBody
 from stripyhorse.models.status_snapshot import StatusSnapshot
 from stripyhorse.models.update_printer_input_body import UpdatePrinterInputBody
+from stripyhorse.models.zpl_html_input_body import ZplHTMLInputBody
+from stripyhorse.models.zpl_html_output_body import ZplHTMLOutputBody
 

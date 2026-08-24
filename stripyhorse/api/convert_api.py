@@ -21,6 +21,8 @@ from typing_extensions import Annotated
 from stripyhorse.models.convert_output_body import ConvertOutputBody
 from stripyhorse.models.html_input_body import HtmlInputBody
 from stripyhorse.models.html_output_body import HtmlOutputBody
+from stripyhorse.models.zpl_html_input_body import ZplHTMLInputBody
+from stripyhorse.models.zpl_html_output_body import ZplHTMLOutputBody
 
 from stripyhorse.api_client import ApiClient, RequestSerialized
 from stripyhorse.api_response import ApiResponse
@@ -482,7 +484,7 @@ class ConvertApi:
     ) -> ConvertOutputBody:
         """Convert a PDF or image to ZPL
 
-        Each page becomes its own ^GFA command (Zebra ACS run-length compression). PDFs up to 16 pages.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $convert = new StripyHorse\\Api\\ConvertApi(null, $config); $result = $convert->convertDocument(new SplFileObject('shipping-label.pdf'), preset: '4x6'); foreach ($result->getPages() as $page) { sendToPrinter($page->getZpl()); } ```  **curl**: ```bash curl https://api.stripyhorse.io/v1/convert \\   -H \"X-Api-Key: sh_live_YOUR_KEY\" -F file=@shipping-label.pdf -F preset=4x6 ```
+        Each page becomes its own ^GFA command (Zebra ACS run-length compression). PDFs up to 16 pages.
 
         :param file: PDF, PNG, GIF or JPEG (required)
         :type file: bytes
@@ -586,7 +588,7 @@ class ConvertApi:
     ) -> ApiResponse[ConvertOutputBody]:
         """Convert a PDF or image to ZPL
 
-        Each page becomes its own ^GFA command (Zebra ACS run-length compression). PDFs up to 16 pages.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $convert = new StripyHorse\\Api\\ConvertApi(null, $config); $result = $convert->convertDocument(new SplFileObject('shipping-label.pdf'), preset: '4x6'); foreach ($result->getPages() as $page) { sendToPrinter($page->getZpl()); } ```  **curl**: ```bash curl https://api.stripyhorse.io/v1/convert \\   -H \"X-Api-Key: sh_live_YOUR_KEY\" -F file=@shipping-label.pdf -F preset=4x6 ```
+        Each page becomes its own ^GFA command (Zebra ACS run-length compression). PDFs up to 16 pages.
 
         :param file: PDF, PNG, GIF or JPEG (required)
         :type file: bytes
@@ -690,7 +692,7 @@ class ConvertApi:
     ) -> RESTResponseType:
         """Convert a PDF or image to ZPL
 
-        Each page becomes its own ^GFA command (Zebra ACS run-length compression). PDFs up to 16 pages.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $convert = new StripyHorse\\Api\\ConvertApi(null, $config); $result = $convert->convertDocument(new SplFileObject('shipping-label.pdf'), preset: '4x6'); foreach ($result->getPages() as $page) { sendToPrinter($page->getZpl()); } ```  **curl**: ```bash curl https://api.stripyhorse.io/v1/convert \\   -H \"X-Api-Key: sh_live_YOUR_KEY\" -F file=@shipping-label.pdf -F preset=4x6 ```
+        Each page becomes its own ^GFA command (Zebra ACS run-length compression). PDFs up to 16 pages.
 
         :param file: PDF, PNG, GIF or JPEG (required)
         :type file: bytes
@@ -887,7 +889,7 @@ class ConvertApi:
     ) -> HtmlOutputBody:
         """Convert an HTML label design to ZPL
 
-        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`). Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
+        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
 
         :param html_input_body: (required)
         :type html_input_body: HtmlInputBody
@@ -955,7 +957,7 @@ class ConvertApi:
     ) -> ApiResponse[HtmlOutputBody]:
         """Convert an HTML label design to ZPL
 
-        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`). Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
+        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
 
         :param html_input_body: (required)
         :type html_input_body: HtmlInputBody
@@ -1023,7 +1025,7 @@ class ConvertApi:
     ) -> RESTResponseType:
         """Convert an HTML label design to ZPL
 
-        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`). Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
+        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
 
         :param html_input_body: (required)
         :type html_input_body: HtmlInputBody
@@ -1132,6 +1134,285 @@ class ConvertApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v1/convert/html',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def convert_zpl_to_html(
+        self,
+        zpl_html_input_body: ZplHTMLInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ZplHTMLOutputBody:
+        """Decompile ZPL into editable HTML
+
+        The migration path for legacy ZPL templates: text, boxes and Code128/QR barcodes become editable HTML in the dialect convertHtml accepts; unsupported elements (raster graphics, exotic barcodes) are embedded as positioned images so the layout survives. Round-tripping through convertHtml preserves scannable barcodes.
+
+        :param zpl_html_input_body: (required)
+        :type zpl_html_input_body: ZplHTMLInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._convert_zpl_to_html_serialize(
+            zpl_html_input_body=zpl_html_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ZplHTMLOutputBody",
+            'default': "ErrorModel",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def convert_zpl_to_html_with_http_info(
+        self,
+        zpl_html_input_body: ZplHTMLInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ZplHTMLOutputBody]:
+        """Decompile ZPL into editable HTML
+
+        The migration path for legacy ZPL templates: text, boxes and Code128/QR barcodes become editable HTML in the dialect convertHtml accepts; unsupported elements (raster graphics, exotic barcodes) are embedded as positioned images so the layout survives. Round-tripping through convertHtml preserves scannable barcodes.
+
+        :param zpl_html_input_body: (required)
+        :type zpl_html_input_body: ZplHTMLInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._convert_zpl_to_html_serialize(
+            zpl_html_input_body=zpl_html_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ZplHTMLOutputBody",
+            'default': "ErrorModel",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def convert_zpl_to_html_without_preload_content(
+        self,
+        zpl_html_input_body: ZplHTMLInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Decompile ZPL into editable HTML
+
+        The migration path for legacy ZPL templates: text, boxes and Code128/QR barcodes become editable HTML in the dialect convertHtml accepts; unsupported elements (raster graphics, exotic barcodes) are embedded as positioned images so the layout survives. Round-tripping through convertHtml preserves scannable barcodes.
+
+        :param zpl_html_input_body: (required)
+        :type zpl_html_input_body: ZplHTMLInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._convert_zpl_to_html_serialize(
+            zpl_html_input_body=zpl_html_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ZplHTMLOutputBody",
+            'default': "ErrorModel",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _convert_zpl_to_html_serialize(
+        self,
+        zpl_html_input_body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if zpl_html_input_body is not None:
+            _body_params = zpl_html_input_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'headerKey', 
+            'bearerKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/convert/zpl-html',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

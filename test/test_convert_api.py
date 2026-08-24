@@ -47,6 +47,13 @@ class TestConvertApi(unittest.TestCase):
         """
         pass
 
+    def test_convert_zpl_to_html(self) -> None:
+        """Test case for convert_zpl_to_html
+
+        Decompile ZPL into editable HTML
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
