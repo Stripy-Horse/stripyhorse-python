@@ -52,8 +52,8 @@ class RenderInputBody(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3']):
-            raise ValueError("must be one of enum values ('4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3')")
+        if value not in set(['4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3', '2x3', '3x2', 'netstamp']):
+            raise ValueError("must be one of enum values ('4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3', '2x3', '3x2', 'netstamp')")
         return value
 
     @field_validator('rotation')
