@@ -54,6 +54,13 @@ class TestConvertApi(unittest.TestCase):
         """
         pass
 
+    def test_void_zpl(self) -> None:
+        """Test case for void_zpl
+
+        Stamp ZPL as void / do-not-ship
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

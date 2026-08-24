@@ -50,6 +50,8 @@ __all__ = [
     "StateOutputBody",
     "StatusSnapshot",
     "UpdatePrinterInputBody",
+    "VoidInputBody",
+    "VoidOutputBody",
     "ZplHTMLInputBody",
     "ZplHTMLOutputBody",
 ]
@@ -91,6 +93,8 @@ from stripyhorse.models.rendered_label import RenderedLabel as RenderedLabel
 from stripyhorse.models.state_output_body import StateOutputBody as StateOutputBody
 from stripyhorse.models.status_snapshot import StatusSnapshot as StatusSnapshot
 from stripyhorse.models.update_printer_input_body import UpdatePrinterInputBody as UpdatePrinterInputBody
+from stripyhorse.models.void_input_body import VoidInputBody as VoidInputBody
+from stripyhorse.models.void_output_body import VoidOutputBody as VoidOutputBody
 from stripyhorse.models.zpl_html_input_body import ZplHTMLInputBody as ZplHTMLInputBody
 from stripyhorse.models.zpl_html_output_body import ZplHTMLOutputBody as ZplHTMLOutputBody
 
