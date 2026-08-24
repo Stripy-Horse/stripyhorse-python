@@ -1,0 +1,212 @@
+# stripyhorse.RenderApi
+
+All URIs are relative to *https://api.stripyhorse.io*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**render_zpl**](RenderApi.md#render_zpl) | **POST** /v1/render | Render ZPL to PNG images
+[**render_zpl_png**](RenderApi.md#render_zpl_png) | **POST** /v1/render.png | Render ZPL and return the first label as a raw PNG
+
+
+# **render_zpl**
+> RenderOutputBody render_zpl(render_input_body)
+
+Render ZPL to PNG images
+
+Renders every label in the ZPL stream. For a raw PNG of a single label use renderZplPng.
+
+**PHP** (`composer require stripyhorse/stripyhorse-php`):
+```php
+$render = new StripyHorse\Api\RenderApi(null, $config);
+$out = $render->renderZpl(new StripyHorse\Model\RenderInputBody([
+    'zpl' => '^XA^FO50,50^A0N,45,45^FDHello^FS^XZ', 'preset' => '4x6',
+]));
+file_put_contents('label.png', base64_decode($out->getLabels()[0]->getPng()));
+```
+
+**curl**:
+```bash
+curl https://api.stripyhorse.io/v1/render \
+  -H "X-Api-Key: sh_live_YOUR_KEY" -H "Content-Type: application/json" \
+  -d '{"zpl":"^XA^FO50,50^A0N,45,45^FDHello^FS^XZ","preset":"4x6"}' 
+```
+
+### Example
+
+* Api Key Authentication (headerKey):
+* Bearer (sh_live_…) Authentication (bearerKey):
+
+```python
+import stripyhorse
+from stripyhorse.models.render_input_body import RenderInputBody
+from stripyhorse.models.render_output_body import RenderOutputBody
+from stripyhorse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stripyhorse.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stripyhorse.Configuration(
+    host = "https://api.stripyhorse.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: headerKey
+configuration.api_key['headerKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['headerKey'] = 'Bearer'
+
+# Configure Bearer authorization (sh_live_…): bearerKey
+configuration = stripyhorse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with stripyhorse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stripyhorse.RenderApi(api_client)
+    render_input_body = stripyhorse.RenderInputBody() # RenderInputBody | 
+
+    try:
+        # Render ZPL to PNG images
+        api_response = api_instance.render_zpl(render_input_body)
+        print("The response of RenderApi->render_zpl:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RenderApi->render_zpl: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **render_input_body** | [**RenderInputBody**](RenderInputBody.md)|  | 
+
+### Return type
+
+[**RenderOutputBody**](RenderOutputBody.md)
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **render_zpl_png**
+> str render_zpl_png(render_input_body)
+
+Render ZPL and return the first label as a raw PNG
+
+curl-friendly variant: the X-Label-Count response header carries the total label count.
+
+**PHP** (`composer require stripyhorse/stripyhorse-php`):
+```php
+$png = (new StripyHorse\Api\RenderApi(null, $config))
+    ->renderZplPng(new StripyHorse\Model\RenderInputBody(['zpl' => $zpl, 'preset' => '4x6']));
+```
+
+**curl**:
+```bash
+curl https://api.stripyhorse.io/v1/render.png \
+  -H "X-Api-Key: sh_live_YOUR_KEY" -H "Content-Type: application/json" \
+  -d '{"zpl":"^XA^FO50,50^A0N,45,45^FDHello^FS^XZ","preset":"4x6"}' -o label.png
+```
+
+### Example
+
+* Api Key Authentication (headerKey):
+* Bearer (sh_live_…) Authentication (bearerKey):
+
+```python
+import stripyhorse
+from stripyhorse.models.render_input_body import RenderInputBody
+from stripyhorse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stripyhorse.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stripyhorse.Configuration(
+    host = "https://api.stripyhorse.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: headerKey
+configuration.api_key['headerKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['headerKey'] = 'Bearer'
+
+# Configure Bearer authorization (sh_live_…): bearerKey
+configuration = stripyhorse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with stripyhorse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stripyhorse.RenderApi(api_client)
+    render_input_body = stripyhorse.RenderInputBody() # RenderInputBody | 
+
+    try:
+        # Render ZPL and return the first label as a raw PNG
+        api_response = api_instance.render_zpl_png(render_input_body)
+        print("The response of RenderApi->render_zpl_png:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RenderApi->render_zpl_png: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **render_input_body** | [**RenderInputBody**](RenderInputBody.md)|  | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  * Content-Type -  <br>  * X-Label-Count -  <br>  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
