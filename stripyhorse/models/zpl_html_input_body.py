@@ -51,8 +51,8 @@ class ZplHTMLInputBody(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3', '2x3', '3x2', 'netstamp']):
-            raise ValueError("must be one of enum values ('4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3', '2x3', '3x2', 'netstamp')")
+        if value not in set(['4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3', '2x3', '3x2', 'netstamp', '2.25x1.25', '2x1', '3x1', '4x1', '1x1', '4x3', '4x8', 'a6']):
+            raise ValueError("must be one of enum values ('4x6', '6x4', '4x4', '4x2', '2x4', '3x5', '5x3', '2x3', '3x2', 'netstamp', '2.25x1.25', '2x1', '3x1', '4x1', '1x1', '4x3', '4x8', 'a6')")
         return value
 
     model_config = ConfigDict(
