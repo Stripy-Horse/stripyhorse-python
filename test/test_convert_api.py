@@ -54,6 +54,13 @@ class TestConvertApi(unittest.TestCase):
         """
         pass
 
+    def test_rasterize_unicode(self) -> None:
+        """Test case for rasterize_unicode
+
+        Make Unicode ZPL printable on any Zebra
+        """
+        pass
+
     def test_void_zpl(self) -> None:
         """Test case for void_zpl
 

@@ -26,6 +26,8 @@ docs/RenderedLabel.md
 docs/SimulatorApi.md
 docs/StateOutputBody.md
 docs/StatusSnapshot.md
+docs/UnicodeInputBody.md
+docs/UnicodeOutputBody.md
 docs/UpdatePrinterInputBody.md
 docs/VoidInputBody.md
 docs/VoidOutputBody.md
@@ -65,6 +67,8 @@ stripyhorse/models/render_output_body.py
 stripyhorse/models/rendered_label.py
 stripyhorse/models/state_output_body.py
 stripyhorse/models/status_snapshot.py
+stripyhorse/models/unicode_input_body.py
+stripyhorse/models/unicode_output_body.py
 stripyhorse/models/update_printer_input_body.py
 stripyhorse/models/void_input_body.py
 stripyhorse/models/void_output_body.py
@@ -96,6 +100,8 @@ test/test_rendered_label.py
 test/test_simulator_api.py
 test/test_state_output_body.py
 test/test_status_snapshot.py
+test/test_unicode_input_body.py
+test/test_unicode_output_body.py
 test/test_update_printer_input_body.py
 test/test_void_input_body.py
 test/test_void_output_body.py

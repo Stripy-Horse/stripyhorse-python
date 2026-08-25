@@ -32,6 +32,8 @@ from stripyhorse.models.render_output_body import RenderOutputBody
 from stripyhorse.models.rendered_label import RenderedLabel
 from stripyhorse.models.state_output_body import StateOutputBody
 from stripyhorse.models.status_snapshot import StatusSnapshot
+from stripyhorse.models.unicode_input_body import UnicodeInputBody
+from stripyhorse.models.unicode_output_body import UnicodeOutputBody
 from stripyhorse.models.update_printer_input_body import UpdatePrinterInputBody
 from stripyhorse.models.void_input_body import VoidInputBody
 from stripyhorse.models.void_output_body import VoidOutputBody
