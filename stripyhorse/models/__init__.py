@@ -15,10 +15,13 @@
 # import models into model package
 from stripyhorse.models.barcode import Barcode
 from stripyhorse.models.check import Check
+from stripyhorse.models.compose_input_body import ComposeInputBody
+from stripyhorse.models.compose_output_body import ComposeOutputBody
 from stripyhorse.models.convert_output_body import ConvertOutputBody
 from stripyhorse.models.converted_page import ConvertedPage
 from stripyhorse.models.create_printer_input_body import CreatePrinterInputBody
 from stripyhorse.models.dpi_verdict import DPIVerdict
+from stripyhorse.models.element import Element
 from stripyhorse.models.error_detail import ErrorDetail
 from stripyhorse.models.error_model import ErrorModel
 from stripyhorse.models.faults import Faults

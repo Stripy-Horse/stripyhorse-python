@@ -18,6 +18,7 @@ __version__ = "0.1.0"
 
 # Define package exports
 __all__ = [
+    "ComposeApi",
     "ConvertApi",
     "PrintersApi",
     "RenderApi",
@@ -33,10 +34,13 @@ __all__ = [
     "ApiException",
     "Barcode",
     "Check",
+    "ComposeInputBody",
+    "ComposeOutputBody",
     "ConvertOutputBody",
     "ConvertedPage",
     "CreatePrinterInputBody",
     "DPIVerdict",
+    "Element",
     "ErrorDetail",
     "ErrorModel",
     "Faults",
@@ -73,6 +77,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
+from stripyhorse.api.compose_api import ComposeApi as ComposeApi
 from stripyhorse.api.convert_api import ConvertApi as ConvertApi
 from stripyhorse.api.printers_api import PrintersApi as PrintersApi
 from stripyhorse.api.render_api import RenderApi as RenderApi
@@ -92,10 +97,13 @@ from stripyhorse.exceptions import ApiException as ApiException
 # import models into sdk package
 from stripyhorse.models.barcode import Barcode as Barcode
 from stripyhorse.models.check import Check as Check
+from stripyhorse.models.compose_input_body import ComposeInputBody as ComposeInputBody
+from stripyhorse.models.compose_output_body import ComposeOutputBody as ComposeOutputBody
 from stripyhorse.models.convert_output_body import ConvertOutputBody as ConvertOutputBody
 from stripyhorse.models.converted_page import ConvertedPage as ConvertedPage
 from stripyhorse.models.create_printer_input_body import CreatePrinterInputBody as CreatePrinterInputBody
 from stripyhorse.models.dpi_verdict import DPIVerdict as DPIVerdict
+from stripyhorse.models.element import Element as Element
 from stripyhorse.models.error_detail import ErrorDetail as ErrorDetail
 from stripyhorse.models.error_model import ErrorModel as ErrorModel
 from stripyhorse.models.faults import Faults as Faults

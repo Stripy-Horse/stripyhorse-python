@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from stripyhorse.api.compose_api import ComposeApi
 from stripyhorse.api.convert_api import ConvertApi
 from stripyhorse.api.printers_api import PrintersApi
 from stripyhorse.api.render_api import RenderApi
