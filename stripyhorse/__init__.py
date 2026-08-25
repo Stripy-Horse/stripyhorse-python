@@ -31,12 +31,16 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "Barcode",
+    "Check",
     "ConvertOutputBody",
     "ConvertedPage",
     "CreatePrinterInputBody",
+    "DPIVerdict",
     "ErrorDetail",
     "ErrorModel",
     "Faults",
+    "Finding",
     "HostStatus",
     "HostStatusInputBody",
     "HostStatusOutputBody",
@@ -46,11 +50,16 @@ __all__ = [
     "JobSummary",
     "ListJobsOutputBody",
     "ListPrintersOutputBody",
+    "PreflightInputBody",
+    "PreflightOutputBody",
     "PrinterBody",
     "PrinterBodyTCPStruct",
     "RenderInputBody",
     "RenderOutputBody",
     "RenderedLabel",
+    "Report",
+    "StampInputBody",
+    "StampOutputBody",
     "StateOutputBody",
     "StatusField",
     "StatusSnapshot",
@@ -81,12 +90,16 @@ from stripyhorse.exceptions import ApiAttributeError as ApiAttributeError
 from stripyhorse.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from stripyhorse.models.barcode import Barcode as Barcode
+from stripyhorse.models.check import Check as Check
 from stripyhorse.models.convert_output_body import ConvertOutputBody as ConvertOutputBody
 from stripyhorse.models.converted_page import ConvertedPage as ConvertedPage
 from stripyhorse.models.create_printer_input_body import CreatePrinterInputBody as CreatePrinterInputBody
+from stripyhorse.models.dpi_verdict import DPIVerdict as DPIVerdict
 from stripyhorse.models.error_detail import ErrorDetail as ErrorDetail
 from stripyhorse.models.error_model import ErrorModel as ErrorModel
 from stripyhorse.models.faults import Faults as Faults
+from stripyhorse.models.finding import Finding as Finding
 from stripyhorse.models.host_status import HostStatus as HostStatus
 from stripyhorse.models.host_status_input_body import HostStatusInputBody as HostStatusInputBody
 from stripyhorse.models.host_status_output_body import HostStatusOutputBody as HostStatusOutputBody
@@ -96,11 +109,16 @@ from stripyhorse.models.job_output_body import JobOutputBody as JobOutputBody
 from stripyhorse.models.job_summary import JobSummary as JobSummary
 from stripyhorse.models.list_jobs_output_body import ListJobsOutputBody as ListJobsOutputBody
 from stripyhorse.models.list_printers_output_body import ListPrintersOutputBody as ListPrintersOutputBody
+from stripyhorse.models.preflight_input_body import PreflightInputBody as PreflightInputBody
+from stripyhorse.models.preflight_output_body import PreflightOutputBody as PreflightOutputBody
 from stripyhorse.models.printer_body import PrinterBody as PrinterBody
 from stripyhorse.models.printer_body_tcp_struct import PrinterBodyTCPStruct as PrinterBodyTCPStruct
 from stripyhorse.models.render_input_body import RenderInputBody as RenderInputBody
 from stripyhorse.models.render_output_body import RenderOutputBody as RenderOutputBody
 from stripyhorse.models.rendered_label import RenderedLabel as RenderedLabel
+from stripyhorse.models.report import Report as Report
+from stripyhorse.models.stamp_input_body import StampInputBody as StampInputBody
+from stripyhorse.models.stamp_output_body import StampOutputBody as StampOutputBody
 from stripyhorse.models.state_output_body import StateOutputBody as StateOutputBody
 from stripyhorse.models.status_field import StatusField as StatusField
 from stripyhorse.models.status_snapshot import StatusSnapshot as StatusSnapshot

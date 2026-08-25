@@ -13,12 +13,16 @@
 """  # noqa: E501
 
 # import models into model package
+from stripyhorse.models.barcode import Barcode
+from stripyhorse.models.check import Check
 from stripyhorse.models.convert_output_body import ConvertOutputBody
 from stripyhorse.models.converted_page import ConvertedPage
 from stripyhorse.models.create_printer_input_body import CreatePrinterInputBody
+from stripyhorse.models.dpi_verdict import DPIVerdict
 from stripyhorse.models.error_detail import ErrorDetail
 from stripyhorse.models.error_model import ErrorModel
 from stripyhorse.models.faults import Faults
+from stripyhorse.models.finding import Finding
 from stripyhorse.models.host_status import HostStatus
 from stripyhorse.models.host_status_input_body import HostStatusInputBody
 from stripyhorse.models.host_status_output_body import HostStatusOutputBody
@@ -28,11 +32,16 @@ from stripyhorse.models.job_output_body import JobOutputBody
 from stripyhorse.models.job_summary import JobSummary
 from stripyhorse.models.list_jobs_output_body import ListJobsOutputBody
 from stripyhorse.models.list_printers_output_body import ListPrintersOutputBody
+from stripyhorse.models.preflight_input_body import PreflightInputBody
+from stripyhorse.models.preflight_output_body import PreflightOutputBody
 from stripyhorse.models.printer_body import PrinterBody
 from stripyhorse.models.printer_body_tcp_struct import PrinterBodyTCPStruct
 from stripyhorse.models.render_input_body import RenderInputBody
 from stripyhorse.models.render_output_body import RenderOutputBody
 from stripyhorse.models.rendered_label import RenderedLabel
+from stripyhorse.models.report import Report
+from stripyhorse.models.stamp_input_body import StampInputBody
+from stripyhorse.models.stamp_output_body import StampOutputBody
 from stripyhorse.models.state_output_body import StateOutputBody
 from stripyhorse.models.status_field import StatusField
 from stripyhorse.models.status_snapshot import StatusSnapshot

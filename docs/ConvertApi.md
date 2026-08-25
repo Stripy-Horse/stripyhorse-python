@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**convert_html**](ConvertApi.md#convert_html) | **POST** /v1/convert/html | Convert an HTML label design to ZPL
 [**convert_zpl_to_html**](ConvertApi.md#convert_zpl_to_html) | **POST** /v1/convert/zpl-html | Decompile ZPL into editable HTML
 [**rasterize_unicode**](ConvertApi.md#rasterize_unicode) | **POST** /v1/unicode | Make Unicode ZPL printable on any Zebra
+[**stamp_zpl**](ConvertApi.md#stamp_zpl) | **POST** /v1/stamp | Stamp an image onto ZPL labels
 [**void_zpl**](ConvertApi.md#void_zpl) | **POST** /v1/void | Stamp ZPL as void / do-not-ship
 
 
@@ -468,6 +469,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UnicodeOutputBody**](UnicodeOutputBody.md)
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **stamp_zpl**
+> StampOutputBody stamp_zpl(stamp_input_body)
+
+Stamp an image onto ZPL labels
+
+Bakes a PNG/GIF/JPEG (a logo, a QA stamp, a brand mark) onto every label in the stream as a positioned graphic field drawn over the existing content. Position and width are in printer dots; height follows the image's aspect ratio.
+
+### Example
+
+* Api Key Authentication (headerKey):
+* Bearer (sh_live_…) Authentication (bearerKey):
+
+```python
+import stripyhorse
+from stripyhorse.models.stamp_input_body import StampInputBody
+from stripyhorse.models.stamp_output_body import StampOutputBody
+from stripyhorse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stripyhorse.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stripyhorse.Configuration(
+    host = "https://api.stripyhorse.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: headerKey
+configuration.api_key['headerKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['headerKey'] = 'Bearer'
+
+# Configure Bearer authorization (sh_live_…): bearerKey
+configuration = stripyhorse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with stripyhorse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stripyhorse.ConvertApi(api_client)
+    stamp_input_body = stripyhorse.StampInputBody() # StampInputBody | 
+
+    try:
+        # Stamp an image onto ZPL labels
+        api_response = api_instance.stamp_zpl(stamp_input_body)
+        print("The response of ConvertApi->stamp_zpl:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ConvertApi->stamp_zpl: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stamp_input_body** | [**StampInputBody**](StampInputBody.md)|  | 
+
+### Return type
+
+[**StampOutputBody**](StampOutputBody.md)
 
 ### Authorization
 

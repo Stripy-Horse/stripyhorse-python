@@ -26,6 +26,13 @@ class TestRenderApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_preflight_label(self) -> None:
+        """Test case for preflight_label
+
+        Grade a label's barcodes before they ship
+        """
+        pass
+
     def test_render_zpl(self) -> None:
         """Test case for render_zpl
 

@@ -61,6 +61,13 @@ class TestConvertApi(unittest.TestCase):
         """
         pass
 
+    def test_stamp_zpl(self) -> None:
+        """Test case for stamp_zpl
+
+        Stamp an image onto ZPL labels
+        """
+        pass
+
     def test_void_zpl(self) -> None:
         """Test case for void_zpl
 
