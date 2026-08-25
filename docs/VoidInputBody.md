@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **height_mm** | **float** |  | [optional] 
 **preset** | **str** | Named label size in inches; alternative to widthMm/heightMm | [optional] 
 **stamp** | **str** | Attribution stamp, e.g. VOID: bfaerber | [optional] 
-**text** | **str** | Warning text; default DO NOT SHIP | [optional] 
+**text** | **str** | Warning text; default VOID - DO NOT MAIL | [optional] 
 **width_mm** | **float** |  | [optional] 
 **zpl** | **str** |  | 
 

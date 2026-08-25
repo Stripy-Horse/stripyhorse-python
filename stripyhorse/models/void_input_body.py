@@ -32,7 +32,7 @@ class VoidInputBody(BaseModel):
     height_mm: Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="heightMm")
     preset: Optional[StrictStr] = Field(default=None, description="Named label size in inches; alternative to widthMm/heightMm")
     stamp: Optional[StrictStr] = Field(default=None, description="Attribution stamp, e.g. VOID: bfaerber")
-    text: Optional[StrictStr] = Field(default=None, description="Warning text; default DO NOT SHIP")
+    text: Optional[StrictStr] = Field(default=None, description="Warning text; default VOID - DO NOT MAIL")
     width_mm: Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="widthMm")
     zpl: StrictStr
     __properties: ClassVar[List[str]] = ["dpmm", "heightMm", "preset", "stamp", "text", "widthMm", "zpl"]

@@ -19,6 +19,7 @@ __version__ = "0.1.0"
 # Define package exports
 __all__ = [
     "ConvertApi",
+    "PrintersApi",
     "RenderApi",
     "SimulatorApi",
     "ApiResponse",
@@ -36,6 +37,9 @@ __all__ = [
     "ErrorDetail",
     "ErrorModel",
     "Faults",
+    "HostStatus",
+    "HostStatusInputBody",
+    "HostStatusOutputBody",
     "HtmlInputBody",
     "HtmlOutputBody",
     "JobOutputBody",
@@ -48,6 +52,7 @@ __all__ = [
     "RenderOutputBody",
     "RenderedLabel",
     "StateOutputBody",
+    "StatusField",
     "StatusSnapshot",
     "UnicodeInputBody",
     "UnicodeOutputBody",
@@ -60,6 +65,7 @@ __all__ = [
 
 # import apis into sdk package
 from stripyhorse.api.convert_api import ConvertApi as ConvertApi
+from stripyhorse.api.printers_api import PrintersApi as PrintersApi
 from stripyhorse.api.render_api import RenderApi as RenderApi
 from stripyhorse.api.simulator_api import SimulatorApi as SimulatorApi
 
@@ -81,6 +87,9 @@ from stripyhorse.models.create_printer_input_body import CreatePrinterInputBody 
 from stripyhorse.models.error_detail import ErrorDetail as ErrorDetail
 from stripyhorse.models.error_model import ErrorModel as ErrorModel
 from stripyhorse.models.faults import Faults as Faults
+from stripyhorse.models.host_status import HostStatus as HostStatus
+from stripyhorse.models.host_status_input_body import HostStatusInputBody as HostStatusInputBody
+from stripyhorse.models.host_status_output_body import HostStatusOutputBody as HostStatusOutputBody
 from stripyhorse.models.html_input_body import HtmlInputBody as HtmlInputBody
 from stripyhorse.models.html_output_body import HtmlOutputBody as HtmlOutputBody
 from stripyhorse.models.job_output_body import JobOutputBody as JobOutputBody
@@ -93,6 +102,7 @@ from stripyhorse.models.render_input_body import RenderInputBody as RenderInputB
 from stripyhorse.models.render_output_body import RenderOutputBody as RenderOutputBody
 from stripyhorse.models.rendered_label import RenderedLabel as RenderedLabel
 from stripyhorse.models.state_output_body import StateOutputBody as StateOutputBody
+from stripyhorse.models.status_field import StatusField as StatusField
 from stripyhorse.models.status_snapshot import StatusSnapshot as StatusSnapshot
 from stripyhorse.models.unicode_input_body import UnicodeInputBody as UnicodeInputBody
 from stripyhorse.models.unicode_output_body import UnicodeOutputBody as UnicodeOutputBody

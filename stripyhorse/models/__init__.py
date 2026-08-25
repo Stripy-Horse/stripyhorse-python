@@ -19,6 +19,9 @@ from stripyhorse.models.create_printer_input_body import CreatePrinterInputBody
 from stripyhorse.models.error_detail import ErrorDetail
 from stripyhorse.models.error_model import ErrorModel
 from stripyhorse.models.faults import Faults
+from stripyhorse.models.host_status import HostStatus
+from stripyhorse.models.host_status_input_body import HostStatusInputBody
+from stripyhorse.models.host_status_output_body import HostStatusOutputBody
 from stripyhorse.models.html_input_body import HtmlInputBody
 from stripyhorse.models.html_output_body import HtmlOutputBody
 from stripyhorse.models.job_output_body import JobOutputBody
@@ -31,6 +34,7 @@ from stripyhorse.models.render_input_body import RenderInputBody
 from stripyhorse.models.render_output_body import RenderOutputBody
 from stripyhorse.models.rendered_label import RenderedLabel
 from stripyhorse.models.state_output_body import StateOutputBody
+from stripyhorse.models.status_field import StatusField
 from stripyhorse.models.status_snapshot import StatusSnapshot
 from stripyhorse.models.unicode_input_body import UnicodeInputBody
 from stripyhorse.models.unicode_output_body import UnicodeOutputBody

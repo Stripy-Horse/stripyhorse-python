@@ -1730,7 +1730,7 @@ class ConvertApi:
     ) -> VoidOutputBody:
         """Stamp ZPL as void / do-not-ship
 
-        Overlays large DO NOT SHIP warnings (and an optional attribution stamp) across every label in the stream, so printed dev and test labels can never be mistaken for shippable ones. Original fields are untouched; stamps draw on top.
+        Overlays a large diagonal VOID - DO NOT MAIL warning (and an optional attribution stamp) across every label in the stream, so printed dev and test labels can never be mistaken for shippable ones. Original fields are untouched; stamps draw on top.
 
         :param void_input_body: (required)
         :type void_input_body: VoidInputBody
@@ -1798,7 +1798,7 @@ class ConvertApi:
     ) -> ApiResponse[VoidOutputBody]:
         """Stamp ZPL as void / do-not-ship
 
-        Overlays large DO NOT SHIP warnings (and an optional attribution stamp) across every label in the stream, so printed dev and test labels can never be mistaken for shippable ones. Original fields are untouched; stamps draw on top.
+        Overlays a large diagonal VOID - DO NOT MAIL warning (and an optional attribution stamp) across every label in the stream, so printed dev and test labels can never be mistaken for shippable ones. Original fields are untouched; stamps draw on top.
 
         :param void_input_body: (required)
         :type void_input_body: VoidInputBody
@@ -1866,7 +1866,7 @@ class ConvertApi:
     ) -> RESTResponseType:
         """Stamp ZPL as void / do-not-ship
 
-        Overlays large DO NOT SHIP warnings (and an optional attribution stamp) across every label in the stream, so printed dev and test labels can never be mistaken for shippable ones. Original fields are untouched; stamps draw on top.
+        Overlays a large diagonal VOID - DO NOT MAIL warning (and an optional attribution stamp) across every label in the stream, so printed dev and test labels can never be mistaken for shippable ones. Original fields are untouched; stamps draw on top.
 
         :param void_input_body: (required)
         :type void_input_body: VoidInputBody

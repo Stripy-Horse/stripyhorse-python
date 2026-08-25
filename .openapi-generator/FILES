@@ -11,6 +11,9 @@ docs/CreatePrinterInputBody.md
 docs/ErrorDetail.md
 docs/ErrorModel.md
 docs/Faults.md
+docs/HostStatus.md
+docs/HostStatusInputBody.md
+docs/HostStatusOutputBody.md
 docs/HtmlInputBody.md
 docs/HtmlOutputBody.md
 docs/JobOutputBody.md
@@ -19,12 +22,14 @@ docs/ListJobsOutputBody.md
 docs/ListPrintersOutputBody.md
 docs/PrinterBody.md
 docs/PrinterBodyTCPStruct.md
+docs/PrintersApi.md
 docs/RenderApi.md
 docs/RenderInputBody.md
 docs/RenderOutputBody.md
 docs/RenderedLabel.md
 docs/SimulatorApi.md
 docs/StateOutputBody.md
+docs/StatusField.md
 docs/StatusSnapshot.md
 docs/UnicodeInputBody.md
 docs/UnicodeOutputBody.md
@@ -41,6 +46,7 @@ setup.py
 stripyhorse/__init__.py
 stripyhorse/api/__init__.py
 stripyhorse/api/convert_api.py
+stripyhorse/api/printers_api.py
 stripyhorse/api/render_api.py
 stripyhorse/api/simulator_api.py
 stripyhorse/api_client.py
@@ -54,6 +60,9 @@ stripyhorse/models/create_printer_input_body.py
 stripyhorse/models/error_detail.py
 stripyhorse/models/error_model.py
 stripyhorse/models/faults.py
+stripyhorse/models/host_status.py
+stripyhorse/models/host_status_input_body.py
+stripyhorse/models/host_status_output_body.py
 stripyhorse/models/html_input_body.py
 stripyhorse/models/html_output_body.py
 stripyhorse/models/job_output_body.py
@@ -66,6 +75,7 @@ stripyhorse/models/render_input_body.py
 stripyhorse/models/render_output_body.py
 stripyhorse/models/rendered_label.py
 stripyhorse/models/state_output_body.py
+stripyhorse/models/status_field.py
 stripyhorse/models/status_snapshot.py
 stripyhorse/models/unicode_input_body.py
 stripyhorse/models/unicode_output_body.py
@@ -85,6 +95,9 @@ test/test_create_printer_input_body.py
 test/test_error_detail.py
 test/test_error_model.py
 test/test_faults.py
+test/test_host_status.py
+test/test_host_status_input_body.py
+test/test_host_status_output_body.py
 test/test_html_input_body.py
 test/test_html_output_body.py
 test/test_job_output_body.py
@@ -93,12 +106,14 @@ test/test_list_jobs_output_body.py
 test/test_list_printers_output_body.py
 test/test_printer_body.py
 test/test_printer_body_tcp_struct.py
+test/test_printers_api.py
 test/test_render_api.py
 test/test_render_input_body.py
 test/test_render_output_body.py
 test/test_rendered_label.py
 test/test_simulator_api.py
 test/test_state_output_body.py
+test/test_status_field.py
 test/test_status_snapshot.py
 test/test_unicode_input_body.py
 test/test_unicode_output_body.py
