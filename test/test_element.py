@@ -36,6 +36,7 @@ class TestElement(unittest.TestCase):
         if include_optional:
             return Element(
                 align = '',
+                columns = 0,
                 corner_radius = 0,
                 data = '',
                 diameter = 56,
@@ -54,6 +55,7 @@ class TestElement(unittest.TestCase):
                 png = '',
                 print_text = True,
                 rotation = 0,
+                rows = 0,
                 text = '',
                 thickness = 56,
                 threshold = 0,

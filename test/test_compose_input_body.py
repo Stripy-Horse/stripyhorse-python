@@ -39,6 +39,7 @@ class TestComposeInputBody(unittest.TestCase):
                 elements = [
                     stripyhorse.models.element.Element(
                         align = '', 
+                        columns = 0, 
                         corner_radius = 0, 
                         data = '', 
                         diameter = 56, 
@@ -57,6 +58,7 @@ class TestComposeInputBody(unittest.TestCase):
                         png = '', 
                         print_text = True, 
                         rotation = 0, 
+                        rows = 0, 
                         text = '', 
                         thickness = 56, 
                         threshold = 0, 
@@ -79,6 +81,7 @@ class TestComposeInputBody(unittest.TestCase):
                 elements = [
                     stripyhorse.models.element.Element(
                         align = '', 
+                        columns = 0, 
                         corner_radius = 0, 
                         data = '', 
                         diameter = 56, 
@@ -97,6 +100,7 @@ class TestComposeInputBody(unittest.TestCase):
                         png = '', 
                         print_text = True, 
                         rotation = 0, 
+                        rows = 0, 
                         text = '', 
                         thickness = 56, 
                         threshold = 0, 

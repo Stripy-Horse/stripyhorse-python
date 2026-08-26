@@ -29,6 +29,7 @@ class Element(BaseModel):
     Element
     """ # noqa: E501
     align: Optional[StrictStr] = Field(default=None, description="Alignment when wrapping")
+    columns: Optional[Annotated[int, Field(le=50, strict=True, ge=0)]] = Field(default=None, description="Grid columns (default 1)")
     corner_radius: Optional[Annotated[int, Field(le=8, strict=True, ge=0)]] = Field(default=None, description="Box corner rounding 0-8", alias="cornerRadius")
     data: Optional[StrictStr] = Field(default=None, description="Barcode payload; {{name}} interpolates")
     diameter: Optional[StrictInt] = Field(default=None, description="Circle diameter in dots")
@@ -47,6 +48,7 @@ class Element(BaseModel):
     png: Optional[StrictStr] = Field(default=None, description="PNG/GIF/JPEG, base64-encoded")
     print_text: Optional[StrictBool] = Field(default=None, description="Print the human-readable line under 1D barcodes (default true)", alias="printText")
     rotation: Optional[StrictInt] = None
+    rows: Optional[Annotated[int, Field(le=50, strict=True, ge=0)]] = Field(default=None, description="Grid rows (default 1)")
     text: Optional[StrictStr] = Field(default=None, description="Text content; {{name}} interpolates from variables")
     thickness: Optional[StrictInt] = Field(default=None, description="Stroke thickness in dots (default 1)")
     threshold: Optional[Annotated[int, Field(le=255, strict=True, ge=0)]] = Field(default=None, description="Bitonal threshold (default 128)")
@@ -55,7 +57,7 @@ class Element(BaseModel):
     x: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Left edge in dots")
     y: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Top edge in dots")
     zpl: Optional[StrictStr] = Field(default=None, description="Verbatim ZPL commands (raw only) - the escape hatch")
-    __properties: ClassVar[List[str]] = ["align", "cornerRadius", "data", "diameter", "errorCorrection", "font", "fontHeight", "fontWidth", "height", "length", "lines", "magnification", "maxWidth", "moduleSize", "moduleWidth", "orientation", "png", "printText", "rotation", "text", "thickness", "threshold", "type", "width", "x", "y", "zpl"]
+    __properties: ClassVar[List[str]] = ["align", "columns", "cornerRadius", "data", "diameter", "errorCorrection", "font", "fontHeight", "fontWidth", "height", "length", "lines", "magnification", "maxWidth", "moduleSize", "moduleWidth", "orientation", "png", "printText", "rotation", "rows", "text", "thickness", "threshold", "type", "width", "x", "y", "zpl"]
 
     @field_validator('align')
     def align_validate_enum(cls, value):
@@ -100,8 +102,8 @@ class Element(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['text', 'barcode128', 'barcode39', 'qr', 'datamatrix', 'box', 'line', 'circle', 'image', 'raw']):
-            raise ValueError("must be one of enum values ('text', 'barcode128', 'barcode39', 'qr', 'datamatrix', 'box', 'line', 'circle', 'image', 'raw')")
+        if value not in set(['text', 'barcode128', 'barcode39', 'qr', 'datamatrix', 'box', 'line', 'circle', 'grid', 'image', 'raw']):
+            raise ValueError("must be one of enum values ('text', 'barcode128', 'barcode39', 'qr', 'datamatrix', 'box', 'line', 'circle', 'grid', 'image', 'raw')")
         return value
 
     model_config = ConfigDict(
@@ -156,6 +158,7 @@ class Element(BaseModel):
 
         _obj = cls.model_validate({
             "align": obj.get("align"),
+            "columns": obj.get("columns"),
             "cornerRadius": obj.get("cornerRadius"),
             "data": obj.get("data"),
             "diameter": obj.get("diameter"),
@@ -174,6 +177,7 @@ class Element(BaseModel):
             "png": obj.get("png"),
             "printText": obj.get("printText"),
             "rotation": obj.get("rotation"),
+            "rows": obj.get("rows"),
             "text": obj.get("text"),
             "thickness": obj.get("thickness"),
             "threshold": obj.get("threshold"),
