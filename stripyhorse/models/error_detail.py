@@ -29,7 +29,7 @@ class ErrorDetail(BaseModel):
     """ # noqa: E501
     location: Optional[StrictStr] = Field(default=None, description="Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'")
     message: Optional[StrictStr] = Field(default=None, description="Error message text")
-    value: Optional[Any] = Field(default=None, description="The value at the given location")
+    value: Optional[Any] = None
     __properties: ClassVar[List[str]] = ["location", "message", "value"]
 
     model_config = ConfigDict(

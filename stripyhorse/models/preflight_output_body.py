@@ -76,13 +76,15 @@ class PreflightOutputBody(BaseModel):
         _items = []
         if self.labels:
             for _item_labels in self.labels:
-                _items.append(_item_labels.to_dict() if _item_labels is not None else None)
+                if _item_labels:
+                    _items.append(_item_labels.to_dict())
             _dict['labels'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in lint (list)
         _items = []
         if self.lint:
             for _item_lint in self.lint:
-                _items.append(_item_lint.to_dict() if _item_lint is not None else None)
+                if _item_lint:
+                    _items.append(_item_lint.to_dict())
             _dict['lint'] = _items
         # set to None if labels (nullable) is None
         # and model_fields_set contains the field

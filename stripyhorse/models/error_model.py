@@ -79,7 +79,8 @@ class ErrorModel(BaseModel):
         _items = []
         if self.errors:
             for _item_errors in self.errors:
-                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
+                if _item_errors:
+                    _items.append(_item_errors.to_dict())
             _dict['errors'] = _items
         # set to None if errors (nullable) is None
         # and model_fields_set contains the field

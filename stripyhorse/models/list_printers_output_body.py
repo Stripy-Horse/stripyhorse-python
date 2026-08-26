@@ -74,7 +74,8 @@ class ListPrintersOutputBody(BaseModel):
         _items = []
         if self.printers:
             for _item_printers in self.printers:
-                _items.append(_item_printers.to_dict() if _item_printers is not None else None)
+                if _item_printers:
+                    _items.append(_item_printers.to_dict())
             _dict['printers'] = _items
         # set to None if printers (nullable) is None
         # and model_fields_set contains the field

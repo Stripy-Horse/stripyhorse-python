@@ -83,7 +83,8 @@ class Report(BaseModel):
         _items = []
         if self.barcodes:
             for _item_barcodes in self.barcodes:
-                _items.append(_item_barcodes.to_dict() if _item_barcodes is not None else None)
+                if _item_barcodes:
+                    _items.append(_item_barcodes.to_dict())
             _dict['barcodes'] = _items
         # set to None if barcodes (nullable) is None
         # and model_fields_set contains the field

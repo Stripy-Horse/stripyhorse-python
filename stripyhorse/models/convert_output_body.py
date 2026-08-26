@@ -74,7 +74,8 @@ class ConvertOutputBody(BaseModel):
         _items = []
         if self.pages:
             for _item_pages in self.pages:
-                _items.append(_item_pages.to_dict() if _item_pages is not None else None)
+                if _item_pages:
+                    _items.append(_item_pages.to_dict())
             _dict['pages'] = _items
         # set to None if pages (nullable) is None
         # and model_fields_set contains the field

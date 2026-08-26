@@ -74,7 +74,8 @@ class ListJobsOutputBody(BaseModel):
         _items = []
         if self.jobs:
             for _item_jobs in self.jobs:
-                _items.append(_item_jobs.to_dict() if _item_jobs is not None else None)
+                if _item_jobs:
+                    _items.append(_item_jobs.to_dict())
             _dict['jobs'] = _items
         # set to None if jobs (nullable) is None
         # and model_fields_set contains the field

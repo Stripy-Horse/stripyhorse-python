@@ -83,13 +83,15 @@ class Barcode(BaseModel):
         _items = []
         if self.checks:
             for _item_checks in self.checks:
-                _items.append(_item_checks.to_dict() if _item_checks is not None else None)
+                if _item_checks:
+                    _items.append(_item_checks.to_dict())
             _dict['checks'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in cross_dpi (list)
         _items = []
         if self.cross_dpi:
             for _item_cross_dpi in self.cross_dpi:
-                _items.append(_item_cross_dpi.to_dict() if _item_cross_dpi is not None else None)
+                if _item_cross_dpi:
+                    _items.append(_item_cross_dpi.to_dict())
             _dict['crossDpi'] = _items
         # set to None if checks (nullable) is None
         # and model_fields_set contains the field

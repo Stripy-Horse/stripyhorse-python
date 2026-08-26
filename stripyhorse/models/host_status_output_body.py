@@ -76,7 +76,8 @@ class HostStatusOutputBody(BaseModel):
         _items = []
         if self.fields:
             for _item_fields in self.fields:
-                _items.append(_item_fields.to_dict() if _item_fields is not None else None)
+                if _item_fields:
+                    _items.append(_item_fields.to_dict())
             _dict['fields'] = _items
         # override the default output from pydantic by calling `to_dict()` of status
         if self.status:

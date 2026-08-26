@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **location** | **str** | Where the error occurred, e.g. &#39;body.items[3].tags&#39; or &#39;path.thing-id&#39; | [optional] 
 **message** | **str** | Error message text | [optional] 
-**value** | **object** | The value at the given location | [optional] 
+**value** | **object** |  | [optional] 
 
 ## Example
 

@@ -75,7 +75,8 @@ class RenderOutputBody(BaseModel):
         _items = []
         if self.labels:
             for _item_labels in self.labels:
-                _items.append(_item_labels.to_dict() if _item_labels is not None else None)
+                if _item_labels:
+                    _items.append(_item_labels.to_dict())
             _dict['labels'] = _items
         # set to None if labels (nullable) is None
         # and model_fields_set contains the field

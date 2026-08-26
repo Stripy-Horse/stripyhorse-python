@@ -101,7 +101,8 @@ class ComposeInputBody(BaseModel):
         _items = []
         if self.elements:
             for _item_elements in self.elements:
-                _items.append(_item_elements.to_dict() if _item_elements is not None else None)
+                if _item_elements:
+                    _items.append(_item_elements.to_dict())
             _dict['elements'] = _items
         # set to None if elements (nullable) is None
         # and model_fields_set contains the field
