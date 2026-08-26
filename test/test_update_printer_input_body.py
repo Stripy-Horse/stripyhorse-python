@@ -35,6 +35,7 @@ class TestUpdatePrinterInputBody(unittest.TestCase):
         model = UpdatePrinterInputBody()
         if include_optional:
             return UpdatePrinterInputBody(
+                anonymize = True,
                 name = '',
                 webhook_url = ''
             )

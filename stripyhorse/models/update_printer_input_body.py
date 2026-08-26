@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,9 +27,10 @@ class UpdatePrinterInputBody(BaseModel):
     """
     UpdatePrinterInputBody
     """ # noqa: E501
+    anonymize: Optional[StrictBool] = None
     name: Optional[StrictStr] = None
     webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
-    __properties: ClassVar[List[str]] = ["name", "webhookUrl"]
+    __properties: ClassVar[List[str]] = ["anonymize", "name", "webhookUrl"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -82,6 +83,7 @@ class UpdatePrinterInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "anonymize": obj.get("anonymize"),
             "name": obj.get("name"),
             "webhookUrl": obj.get("webhookUrl")
         })

@@ -35,6 +35,7 @@ class TestPrinterBody(unittest.TestCase):
         model = PrinterBody()
         if include_optional:
             return PrinterBody(
+                anonymize = True,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 dpmm = 56,
                 expires_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
@@ -64,6 +65,7 @@ class TestPrinterBody(unittest.TestCase):
             )
         else:
             return PrinterBody(
+                anonymize = True,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 dpmm = 56,
                 height_mm = 1.337,

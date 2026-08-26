@@ -37,6 +37,7 @@ class TestListPrintersOutputBody(unittest.TestCase):
             return ListPrintersOutputBody(
                 printers = [
                     stripyhorse.models.printer_body.PrinterBody(
+                        anonymize = True, 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         dpmm = 56, 
                         expires_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -69,6 +70,7 @@ class TestListPrintersOutputBody(unittest.TestCase):
             return ListPrintersOutputBody(
                 printers = [
                     stripyhorse.models.printer_body.PrinterBody(
+                        anonymize = True, 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         dpmm = 56, 
                         expires_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

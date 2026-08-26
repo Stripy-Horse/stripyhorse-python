@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from stripyhorse.models.printer_body_tcp_struct import PrinterBodyTCPStruct
 from stripyhorse.models.status_snapshot import StatusSnapshot
@@ -30,6 +30,7 @@ class PrinterBody(BaseModel):
     """
     PrinterBody
     """ # noqa: E501
+    anonymize: StrictBool = Field(description="When true, PII is masked and graphics stripped from every captured frame")
     created_at: datetime = Field(alias="createdAt")
     dpmm: StrictInt
     expires_at: Optional[datetime] = Field(default=None, alias="expiresAt")
@@ -43,7 +44,7 @@ class PrinterBody(BaseModel):
     webhook_secret: Optional[StrictStr] = Field(default=None, description="HMAC-SHA256 key for X-Stripy-Horse-Signature. Only returned on creation.", alias="webhookSecret")
     webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
     width_mm: Union[StrictFloat, StrictInt] = Field(alias="widthMm")
-    __properties: ClassVar[List[str]] = ["createdAt", "dpmm", "expiresAt", "heightMm", "id", "ingestUrl", "mode", "name", "state", "tcp", "webhookSecret", "webhookUrl", "widthMm"]
+    __properties: ClassVar[List[str]] = ["anonymize", "createdAt", "dpmm", "expiresAt", "heightMm", "id", "ingestUrl", "mode", "name", "state", "tcp", "webhookSecret", "webhookUrl", "widthMm"]
 
     @field_validator('mode')
     def mode_validate_enum(cls, value):
@@ -109,6 +110,7 @@ class PrinterBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "anonymize": obj.get("anonymize"),
             "createdAt": obj.get("createdAt"),
             "dpmm": obj.get("dpmm"),
             "expiresAt": obj.get("expiresAt"),

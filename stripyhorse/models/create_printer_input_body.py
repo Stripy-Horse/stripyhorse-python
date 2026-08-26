@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -28,6 +28,7 @@ class CreatePrinterInputBody(BaseModel):
     """
     CreatePrinterInputBody
     """ # noqa: E501
+    anonymize: Optional[StrictBool] = Field(default=None, description="Mask PII and strip graphics from every captured frame")
     dpmm: Optional[StrictInt] = Field(default=None, description="Print density in dots/mm (152/203/300/600 dpi); default 8")
     height_mm: Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="heightMm")
     mode: Optional[StrictStr] = None
@@ -35,7 +36,7 @@ class CreatePrinterInputBody(BaseModel):
     preset: Optional[StrictStr] = Field(default=None, description="Named label size in inches; alternative to widthMm/heightMm")
     webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
     width_mm: Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="widthMm")
-    __properties: ClassVar[List[str]] = ["dpmm", "heightMm", "mode", "name", "preset", "webhookUrl", "widthMm"]
+    __properties: ClassVar[List[str]] = ["anonymize", "dpmm", "heightMm", "mode", "name", "preset", "webhookUrl", "widthMm"]
 
     @field_validator('dpmm')
     def dpmm_validate_enum(cls, value):
@@ -118,6 +119,7 @@ class CreatePrinterInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "anonymize": obj.get("anonymize"),
             "dpmm": obj.get("dpmm"),
             "heightMm": obj.get("heightMm"),
             "mode": obj.get("mode"),
