@@ -76,7 +76,7 @@ class ConvertApi:
     ) -> None:
         """Convert many documents in one request, results streamed
 
-        Upload up to 20 PDFs/images as repeated `files` fields. The response is application/x-ndjson: one JSON object per converted page, streamed as each page finishes — `{\"file\":…,\"page\":…,\"pageCount\":…,\"zpl\":…}` on success, `{\"file\":…,\"error\":…}` per failed file (remaining files still convert).
+        Upload up to 20 PDFs/images as repeated `files` fields. The response is application/x-ndjson: one JSON object per converted page, streamed as each page finishes: `{\"file\":…,\"page\":…,\"pageCount\":…,\"zpl\":…}` on success, `{\"file\":…,\"error\":…}` per failed file (remaining files still convert).
 
         :param files: (required)
         :type files: List[bytes]
@@ -180,7 +180,7 @@ class ConvertApi:
     ) -> ApiResponse[None]:
         """Convert many documents in one request, results streamed
 
-        Upload up to 20 PDFs/images as repeated `files` fields. The response is application/x-ndjson: one JSON object per converted page, streamed as each page finishes — `{\"file\":…,\"page\":…,\"pageCount\":…,\"zpl\":…}` on success, `{\"file\":…,\"error\":…}` per failed file (remaining files still convert).
+        Upload up to 20 PDFs/images as repeated `files` fields. The response is application/x-ndjson: one JSON object per converted page, streamed as each page finishes: `{\"file\":…,\"page\":…,\"pageCount\":…,\"zpl\":…}` on success, `{\"file\":…,\"error\":…}` per failed file (remaining files still convert).
 
         :param files: (required)
         :type files: List[bytes]
@@ -284,7 +284,7 @@ class ConvertApi:
     ) -> RESTResponseType:
         """Convert many documents in one request, results streamed
 
-        Upload up to 20 PDFs/images as repeated `files` fields. The response is application/x-ndjson: one JSON object per converted page, streamed as each page finishes — `{\"file\":…,\"page\":…,\"pageCount\":…,\"zpl\":…}` on success, `{\"file\":…,\"error\":…}` per failed file (remaining files still convert).
+        Upload up to 20 PDFs/images as repeated `files` fields. The response is application/x-ndjson: one JSON object per converted page, streamed as each page finishes: `{\"file\":…,\"page\":…,\"pageCount\":…,\"zpl\":…}` on success, `{\"file\":…,\"error\":…}` per failed file (remaining files still convert).
 
         :param files: (required)
         :type files: List[bytes]
@@ -895,7 +895,7 @@ class ConvertApi:
     ) -> HtmlOutputBody:
         """Convert an HTML label design to ZPL
 
-        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
+        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it, except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
 
         :param html_input_body: (required)
         :type html_input_body: HtmlInputBody
@@ -963,7 +963,7 @@ class ConvertApi:
     ) -> ApiResponse[HtmlOutputBody]:
         """Convert an HTML label design to ZPL
 
-        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
+        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it, except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
 
         :param html_input_body: (required)
         :type html_input_body: HtmlInputBody
@@ -1031,7 +1031,7 @@ class ConvertApi:
     ) -> RESTResponseType:
         """Convert an HTML label design to ZPL
 
-        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it — except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
+        Renders the HTML at exact print resolution (headless Chrome, network access blocked) and rasterizes it, except `<zpl-barcode type=\"code128|qr\" data=\"…\">` elements, which are measured from the layout and emitted as native ^BC/^BQ fields at their exact boxes. Size and position them with CSS (`left/top/width/height`); optional `module` (^BY dots) and `mag` (QR magnification) attributes pin exact bar geometry instead of fitting it to the box. Unsupported types or unencodable data fail loudly.  **PHP** (`composer require stripyhorse/stripyhorse-php`): ```php $out = $convert->convertHtml(new StripyHorse\\Model\\HtmlInputBody([     'html' => '<div style=\"position:absolute;left:40px;top:40px;font-size:50px\">Hello</div>',     'preset' => '4x6', ])); echo $out->getZpl(); ```
 
         :param html_input_body: (required)
         :type html_input_body: HtmlInputBody
@@ -1453,7 +1453,7 @@ class ConvertApi:
     ) -> UnicodeOutputBody:
         """Make Unicode ZPL printable on any Zebra
 
-        Text fields containing characters the printer's fonts can't render — Arabic (contextual joining, RTL), Cyrillic, and everything else beyond ASCII — are shaped properly and re-emitted as ^GFA bitmaps at the field's exact position and size. Every other byte (barcodes, ASCII text, graphics) passes through untouched. Fields that can't be converted safely (rotated, ^FH-escaped) are left unchanged and reported in `skipped`.
+        Text fields containing characters the printer's fonts can't render (Arabic with contextual joining and RTL, Cyrillic, and everything else beyond ASCII) are shaped properly and re-emitted as ^GFA bitmaps at the field's exact position and size. Every other byte (barcodes, ASCII text, graphics) passes through untouched. Fields that can't be converted safely (rotated, ^FH-escaped) are left unchanged and reported in `skipped`.
 
         :param unicode_input_body: (required)
         :type unicode_input_body: UnicodeInputBody
@@ -1521,7 +1521,7 @@ class ConvertApi:
     ) -> ApiResponse[UnicodeOutputBody]:
         """Make Unicode ZPL printable on any Zebra
 
-        Text fields containing characters the printer's fonts can't render — Arabic (contextual joining, RTL), Cyrillic, and everything else beyond ASCII — are shaped properly and re-emitted as ^GFA bitmaps at the field's exact position and size. Every other byte (barcodes, ASCII text, graphics) passes through untouched. Fields that can't be converted safely (rotated, ^FH-escaped) are left unchanged and reported in `skipped`.
+        Text fields containing characters the printer's fonts can't render (Arabic with contextual joining and RTL, Cyrillic, and everything else beyond ASCII) are shaped properly and re-emitted as ^GFA bitmaps at the field's exact position and size. Every other byte (barcodes, ASCII text, graphics) passes through untouched. Fields that can't be converted safely (rotated, ^FH-escaped) are left unchanged and reported in `skipped`.
 
         :param unicode_input_body: (required)
         :type unicode_input_body: UnicodeInputBody
@@ -1589,7 +1589,7 @@ class ConvertApi:
     ) -> RESTResponseType:
         """Make Unicode ZPL printable on any Zebra
 
-        Text fields containing characters the printer's fonts can't render — Arabic (contextual joining, RTL), Cyrillic, and everything else beyond ASCII — are shaped properly and re-emitted as ^GFA bitmaps at the field's exact position and size. Every other byte (barcodes, ASCII text, graphics) passes through untouched. Fields that can't be converted safely (rotated, ^FH-escaped) are left unchanged and reported in `skipped`.
+        Text fields containing characters the printer's fonts can't render (Arabic with contextual joining and RTL, Cyrillic, and everything else beyond ASCII) are shaped properly and re-emitted as ^GFA bitmaps at the field's exact position and size. Every other byte (barcodes, ASCII text, graphics) passes through untouched. Fields that can't be converted safely (rotated, ^FH-escaped) are left unchanged and reported in `skipped`.
 
         :param unicode_input_body: (required)
         :type unicode_input_body: UnicodeInputBody
