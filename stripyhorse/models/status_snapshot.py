@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from stripyhorse.models.faults import Faults
 from typing import Optional, Set
@@ -28,12 +28,15 @@ class StatusSnapshot(BaseModel):
     """
     StatusSnapshot
     """ # noqa: E501
+    darkness: StrictStr = Field(description="print.tone setting, e.g. 20.0")
     faults: Faults
     formats_in_buffer: StrictInt = Field(alias="formatsInBuffer")
+    friendly_name: StrictStr = Field(description="device.friendly_name override; empty means unset", alias="friendlyName")
     label_length_dots: StrictInt = Field(alias="labelLengthDots")
     odometer: StrictInt
+    speed_ips: StrictStr = Field(description="media.speed setting, inches/second", alias="speedIps")
     width_dots: StrictInt = Field(alias="widthDots")
-    __properties: ClassVar[List[str]] = ["faults", "formatsInBuffer", "labelLengthDots", "odometer", "widthDots"]
+    __properties: ClassVar[List[str]] = ["darkness", "faults", "formatsInBuffer", "friendlyName", "labelLengthDots", "odometer", "speedIps", "widthDots"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,10 +92,13 @@ class StatusSnapshot(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "darkness": obj.get("darkness"),
             "faults": Faults.from_dict(obj["faults"]) if obj.get("faults") is not None else None,
             "formatsInBuffer": obj.get("formatsInBuffer"),
+            "friendlyName": obj.get("friendlyName"),
             "labelLengthDots": obj.get("labelLengthDots"),
             "odometer": obj.get("odometer"),
+            "speedIps": obj.get("speedIps"),
             "widthDots": obj.get("widthDots")
         })
         return _obj

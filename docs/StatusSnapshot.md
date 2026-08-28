@@ -5,10 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**darkness** | **str** | print.tone setting, e.g. 20.0 | 
 **faults** | [**Faults**](Faults.md) |  | 
 **formats_in_buffer** | **int** |  | 
+**friendly_name** | **str** | device.friendly_name override; empty means unset | 
 **label_length_dots** | **int** |  | 
 **odometer** | **int** |  | 
+**speed_ips** | **str** | media.speed setting, inches/second | 
 **width_dots** | **int** |  | 
 
 ## Example

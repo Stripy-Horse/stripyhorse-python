@@ -45,6 +45,7 @@ class TestPrinterBody(unittest.TestCase):
                 mode = 'ephemeral',
                 name = '',
                 state = stripyhorse.models.status_snapshot.StatusSnapshot(
+                    darkness = '', 
                     faults = stripyhorse.models.faults.Faults(
                         head_up = True, 
                         over_temp = True, 
@@ -53,8 +54,10 @@ class TestPrinterBody(unittest.TestCase):
                         ribbon_out = True, 
                         under_temp = True, ), 
                     formats_in_buffer = 56, 
+                    friendly_name = '', 
                     label_length_dots = 56, 
                     odometer = 56, 
+                    speed_ips = '', 
                     width_dots = 56, ),
                 tcp = stripyhorse.models.printer_body_tcp_struct.PrinterBodyTCPStruct(
                     host = '', 

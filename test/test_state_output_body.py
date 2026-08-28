@@ -36,6 +36,7 @@ class TestStateOutputBody(unittest.TestCase):
         if include_optional:
             return StateOutputBody(
                 state = stripyhorse.models.status_snapshot.StatusSnapshot(
+                    darkness = '', 
                     faults = stripyhorse.models.faults.Faults(
                         head_up = True, 
                         over_temp = True, 
@@ -44,13 +45,16 @@ class TestStateOutputBody(unittest.TestCase):
                         ribbon_out = True, 
                         under_temp = True, ), 
                     formats_in_buffer = 56, 
+                    friendly_name = '', 
                     label_length_dots = 56, 
                     odometer = 56, 
+                    speed_ips = '', 
                     width_dots = 56, )
             )
         else:
             return StateOutputBody(
                 state = stripyhorse.models.status_snapshot.StatusSnapshot(
+                    darkness = '', 
                     faults = stripyhorse.models.faults.Faults(
                         head_up = True, 
                         over_temp = True, 
@@ -59,8 +63,10 @@ class TestStateOutputBody(unittest.TestCase):
                         ribbon_out = True, 
                         under_temp = True, ), 
                     formats_in_buffer = 56, 
+                    friendly_name = '', 
                     label_length_dots = 56, 
                     odometer = 56, 
+                    speed_ips = '', 
                     width_dots = 56, ),
         )
         """

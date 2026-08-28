@@ -35,6 +35,7 @@ class TestStatusSnapshot(unittest.TestCase):
         model = StatusSnapshot()
         if include_optional:
             return StatusSnapshot(
+                darkness = '',
                 faults = stripyhorse.models.faults.Faults(
                     head_up = True, 
                     over_temp = True, 
@@ -43,12 +44,15 @@ class TestStatusSnapshot(unittest.TestCase):
                     ribbon_out = True, 
                     under_temp = True, ),
                 formats_in_buffer = 56,
+                friendly_name = '',
                 label_length_dots = 56,
                 odometer = 56,
+                speed_ips = '',
                 width_dots = 56
             )
         else:
             return StatusSnapshot(
+                darkness = '',
                 faults = stripyhorse.models.faults.Faults(
                     head_up = True, 
                     over_temp = True, 
@@ -57,8 +61,10 @@ class TestStatusSnapshot(unittest.TestCase):
                     ribbon_out = True, 
                     under_temp = True, ),
                 formats_in_buffer = 56,
+                friendly_name = '',
                 label_length_dots = 56,
                 odometer = 56,
+                speed_ips = '',
                 width_dots = 56,
         )
         """
