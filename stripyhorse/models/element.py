@@ -36,7 +36,7 @@ class Element(BaseModel):
     diameter: Optional[StrictInt] = Field(default=None, description="Circle diameter in dots")
     error_correction: Optional[StrictStr] = Field(default=None, description="QR error correction (default M)", alias="errorCorrection")
     font: Optional[StrictStr] = Field(default=None, description="Printer font: 0 (scalable, default) or A-Z")
-    font_height: Optional[StrictInt] = Field(default=None, description="Character height in dots (text)", alias="fontHeight")
+    font_height: Optional[Annotated[int, Field(le=10000, strict=True)]] = Field(default=None, description="Character height in dots (text)", alias="fontHeight")
     font_width: Optional[StrictInt] = Field(default=None, description="Character width in dots; 0 follows fontHeight", alias="fontWidth")
     height: Optional[StrictInt] = Field(default=None, description="Bar height in dots (1D) / box height in dots (box)")
     length: Optional[StrictInt] = Field(default=None, description="Line length in dots")

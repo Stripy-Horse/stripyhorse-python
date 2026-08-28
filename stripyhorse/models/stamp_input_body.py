@@ -29,7 +29,7 @@ class StampInputBody(BaseModel):
     StampInputBody
     """ # noqa: E501
     image: StrictStr = Field(description="PNG/GIF/JPEG, base64-encoded")
-    width_dots: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Stamp width in dots; 0 keeps the image's natural size", alias="widthDots")
+    width_dots: Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]] = Field(default=None, description="Stamp width in dots; 0 keeps the image's natural size", alias="widthDots")
     x: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Left edge in dots")
     y: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Top edge in dots")
     zpl: StrictStr
