@@ -36,6 +36,7 @@ class TestElement(unittest.TestCase):
         if include_optional:
             return Element(
                 align = '',
+                anchor = '',
                 columns = 0,
                 corner_radius = 0,
                 data = '',
@@ -46,9 +47,11 @@ class TestElement(unittest.TestCase):
                 font_width = 56,
                 height = 56,
                 length = 56,
+                line_spacing = 56,
                 lines = 56,
                 magnification = 56,
                 max_width = 56,
+                mode = '',
                 module_size = 56,
                 module_width = 56,
                 orientation = '',

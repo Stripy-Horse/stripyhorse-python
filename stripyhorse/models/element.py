@@ -29,6 +29,7 @@ class Element(BaseModel):
     Element
     """ # noqa: E501
     align: Optional[StrictStr] = Field(default=None, description="Alignment when wrapping")
+    anchor: Optional[StrictStr] = Field(default=None, description="Which corner x,y names. topLeft (^FO, default); bottomLeft (^FT: the text baseline, what most designer-exported ZPL uses); the Right variants make x the field's right edge (ZPL justification 1)")
     columns: Optional[Annotated[int, Field(le=50, strict=True, ge=0)]] = Field(default=None, description="Grid columns (default 1)")
     corner_radius: Optional[Annotated[int, Field(le=8, strict=True, ge=0)]] = Field(default=None, description="Box corner rounding 0-8", alias="cornerRadius")
     data: Optional[StrictStr] = Field(default=None, description="Barcode payload; {{name}} interpolates")
@@ -39,9 +40,11 @@ class Element(BaseModel):
     font_width: Optional[StrictInt] = Field(default=None, description="Character width in dots; 0 follows fontHeight", alias="fontWidth")
     height: Optional[StrictInt] = Field(default=None, description="Bar height in dots (1D) / box height in dots (box)")
     length: Optional[StrictInt] = Field(default=None, description="Line length in dots")
+    line_spacing: Optional[StrictInt] = Field(default=None, description="Extra dots between wrapped lines", alias="lineSpacing")
     lines: Optional[StrictInt] = Field(default=None, description="Max lines when wrapping (default 1)")
     magnification: Optional[StrictInt] = Field(default=None, description="QR module magnification (default 3)")
     max_width: Optional[StrictInt] = Field(default=None, description="Wrap text into a block this many dots wide", alias="maxWidth")
+    mode: Optional[StrictStr] = Field(default=None, description="Code 128 mode: N none (default), U UCC case, A automatic subset switching, D UCC/EAN application identifiers")
     module_size: Optional[StrictInt] = Field(default=None, description="DataMatrix module size in dots (default 4)", alias="moduleSize")
     module_width: Optional[StrictInt] = Field(default=None, description="Narrow element width in dots (1D; default 3)", alias="moduleWidth")
     orientation: Optional[StrictStr] = Field(default=None, description="Line direction")
@@ -57,7 +60,7 @@ class Element(BaseModel):
     x: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Left edge in dots")
     y: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Top edge in dots")
     zpl: Optional[StrictStr] = Field(default=None, description="Verbatim ZPL commands (raw only) - the escape hatch")
-    __properties: ClassVar[List[str]] = ["align", "columns", "cornerRadius", "data", "diameter", "errorCorrection", "font", "fontHeight", "fontWidth", "height", "length", "lines", "magnification", "maxWidth", "moduleSize", "moduleWidth", "orientation", "png", "printText", "rotation", "rows", "text", "thickness", "threshold", "type", "width", "x", "y", "zpl"]
+    __properties: ClassVar[List[str]] = ["align", "anchor", "columns", "cornerRadius", "data", "diameter", "errorCorrection", "font", "fontHeight", "fontWidth", "height", "length", "lineSpacing", "lines", "magnification", "maxWidth", "mode", "moduleSize", "moduleWidth", "orientation", "png", "printText", "rotation", "rows", "text", "thickness", "threshold", "type", "width", "x", "y", "zpl"]
 
     @field_validator('align')
     def align_validate_enum(cls, value):
@@ -69,6 +72,16 @@ class Element(BaseModel):
             raise ValueError("must be one of enum values ('', 'left', 'center', 'right', 'justify')")
         return value
 
+    @field_validator('anchor')
+    def anchor_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['', 'topLeft', 'bottomLeft', 'topRight', 'bottomRight']):
+            raise ValueError("must be one of enum values ('', 'topLeft', 'bottomLeft', 'topRight', 'bottomRight')")
+        return value
+
     @field_validator('error_correction')
     def error_correction_validate_enum(cls, value):
         """Validates the enum"""
@@ -77,6 +90,16 @@ class Element(BaseModel):
 
         if value not in set(['', 'L', 'M', 'Q', 'H']):
             raise ValueError("must be one of enum values ('', 'L', 'M', 'Q', 'H')")
+        return value
+
+    @field_validator('mode')
+    def mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['', 'N', 'U', 'A', 'D']):
+            raise ValueError("must be one of enum values ('', 'N', 'U', 'A', 'D')")
         return value
 
     @field_validator('orientation')
@@ -158,6 +181,7 @@ class Element(BaseModel):
 
         _obj = cls.model_validate({
             "align": obj.get("align"),
+            "anchor": obj.get("anchor"),
             "columns": obj.get("columns"),
             "cornerRadius": obj.get("cornerRadius"),
             "data": obj.get("data"),
@@ -168,9 +192,11 @@ class Element(BaseModel):
             "fontWidth": obj.get("fontWidth"),
             "height": obj.get("height"),
             "length": obj.get("length"),
+            "lineSpacing": obj.get("lineSpacing"),
             "lines": obj.get("lines"),
             "magnification": obj.get("magnification"),
             "maxWidth": obj.get("maxWidth"),
+            "mode": obj.get("mode"),
             "moduleSize": obj.get("moduleSize"),
             "moduleWidth": obj.get("moduleWidth"),
             "orientation": obj.get("orientation"),
