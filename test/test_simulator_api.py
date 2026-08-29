@@ -40,6 +40,13 @@ class TestSimulatorApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_job(self) -> None:
+        """Test case for delete_job
+
+        Delete one captured job
+        """
+        pass
+
     def test_delete_printer(self) -> None:
         """Test case for delete_printer
 

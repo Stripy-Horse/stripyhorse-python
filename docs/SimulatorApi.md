@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**clear_jobs**](SimulatorApi.md#clear_jobs) | **DELETE** /v1/printers/{printerId}/jobs | Delete all captured jobs
 [**create_printer**](SimulatorApi.md#create_printer) | **POST** /v1/printers | Create a virtual printer
+[**delete_job**](SimulatorApi.md#delete_job) | **DELETE** /v1/printers/{printerId}/jobs/{jobId} | Delete one captured job
 [**delete_printer**](SimulatorApi.md#delete_printer) | **DELETE** /v1/printers/{printerId} | Delete a printer and its captured jobs
 [**get_job**](SimulatorApi.md#get_job) | **GET** /v1/printers/{printerId}/jobs/{jobId} | Get one job including its raw ZPL
 [**get_job_label**](SimulatorApi.md#get_job_label) | **GET** /v1/printers/{printerId}/jobs/{jobId}/labels/{index}.png | Get one rendered label as a PNG
@@ -181,6 +182,89 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_job**
+> delete_job(printer_id, job_id)
+
+Delete one captured job
+
+### Example
+
+* Api Key Authentication (headerKey):
+* Bearer (sh_live_…) Authentication (bearerKey):
+
+```python
+import stripyhorse
+from stripyhorse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stripyhorse.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stripyhorse.Configuration(
+    host = "https://api.stripyhorse.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: headerKey
+configuration.api_key['headerKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['headerKey'] = 'Bearer'
+
+# Configure Bearer authorization (sh_live_…): bearerKey
+configuration = stripyhorse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with stripyhorse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stripyhorse.SimulatorApi(api_client)
+    printer_id = 'printer_id_example' # str | 
+    job_id = 56 # int | 
+
+    try:
+        # Delete one captured job
+        api_instance.delete_job(printer_id, job_id)
+    except Exception as e:
+        print("Exception when calling SimulatorApi->delete_job: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **printer_id** | **str**|  | 
+ **job_id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
 **0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
