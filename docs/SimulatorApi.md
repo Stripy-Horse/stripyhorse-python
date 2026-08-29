@@ -618,6 +618,8 @@ Name | Type | Description  | Notes
 
 List your printers
 
+Every printer on your account, whichever of its keys created them.
+
 ### Example
 
 * Api Key Authentication (headerKey):

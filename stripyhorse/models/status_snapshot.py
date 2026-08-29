@@ -35,8 +35,9 @@ class StatusSnapshot(BaseModel):
     label_length_dots: StrictInt = Field(alias="labelLengthDots")
     odometer: StrictInt
     speed_ips: StrictStr = Field(description="media.speed setting, inches/second", alias="speedIps")
+    tear_off: StrictStr = Field(description="ezpl.tear_off setting, dots", alias="tearOff")
     width_dots: StrictInt = Field(alias="widthDots")
-    __properties: ClassVar[List[str]] = ["darkness", "faults", "formatsInBuffer", "friendlyName", "labelLengthDots", "odometer", "speedIps", "widthDots"]
+    __properties: ClassVar[List[str]] = ["darkness", "faults", "formatsInBuffer", "friendlyName", "labelLengthDots", "odometer", "speedIps", "tearOff", "widthDots"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -99,6 +100,7 @@ class StatusSnapshot(BaseModel):
             "labelLengthDots": obj.get("labelLengthDots"),
             "odometer": obj.get("odometer"),
             "speedIps": obj.get("speedIps"),
+            "tearOff": obj.get("tearOff"),
             "widthDots": obj.get("widthDots")
         })
         return _obj

@@ -58,6 +58,7 @@ class TestPrinterBody(unittest.TestCase):
                     label_length_dots = 56, 
                     odometer = 56, 
                     speed_ips = '', 
+                    tear_off = '', 
                     width_dots = 56, ),
                 tcp = stripyhorse.models.printer_body_tcp_struct.PrinterBodyTCPStruct(
                     host = '', 

@@ -2000,6 +2000,7 @@ class SimulatorApi:
     ) -> ListPrintersOutputBody:
         """List your printers
 
+        Every printer on your account, whichever of its keys created them.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2063,6 +2064,7 @@ class SimulatorApi:
     ) -> ApiResponse[ListPrintersOutputBody]:
         """List your printers
 
+        Every printer on your account, whichever of its keys created them.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2126,6 +2128,7 @@ class SimulatorApi:
     ) -> RESTResponseType:
         """List your printers
 
+        Every printer on your account, whichever of its keys created them.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

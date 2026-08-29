@@ -48,6 +48,7 @@ class TestStatusSnapshot(unittest.TestCase):
                 label_length_dots = 56,
                 odometer = 56,
                 speed_ips = '',
+                tear_off = '',
                 width_dots = 56
             )
         else:
@@ -65,6 +66,7 @@ class TestStatusSnapshot(unittest.TestCase):
                 label_length_dots = 56,
                 odometer = 56,
                 speed_ips = '',
+                tear_off = '',
                 width_dots = 56,
         )
         """

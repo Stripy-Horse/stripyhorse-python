@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **label_length_dots** | **int** |  | 
 **odometer** | **int** |  | 
 **speed_ips** | **str** | media.speed setting, inches/second | 
+**tear_off** | **str** | ezpl.tear_off setting, dots | 
 **width_dots** | **int** |  | 
 
 ## Example
