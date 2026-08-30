@@ -30,6 +30,7 @@ class PrinterBody(BaseModel):
     """
     PrinterBody
     """ # noqa: E501
+    access_mode: StrictStr = Field(description="Who may print to the TCP port: open (anyone), token (the stream must open with ~SH plus the ingest token), ip (only addresses the org has claimed)", alias="accessMode")
     anonymize: StrictBool = Field(description="When true, PII is masked and graphics stripped from every captured frame")
     created_at: datetime = Field(alias="createdAt")
     dpmm: StrictInt
@@ -44,7 +45,7 @@ class PrinterBody(BaseModel):
     webhook_secret: Optional[StrictStr] = Field(default=None, description="HMAC-SHA256 key for X-Stripy-Horse-Signature. Only returned on creation.", alias="webhookSecret")
     webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
     width_mm: Union[StrictFloat, StrictInt] = Field(alias="widthMm")
-    __properties: ClassVar[List[str]] = ["anonymize", "createdAt", "dpmm", "expiresAt", "heightMm", "id", "ingestUrl", "mode", "name", "state", "tcp", "webhookSecret", "webhookUrl", "widthMm"]
+    __properties: ClassVar[List[str]] = ["accessMode", "anonymize", "createdAt", "dpmm", "expiresAt", "heightMm", "id", "ingestUrl", "mode", "name", "state", "tcp", "webhookSecret", "webhookUrl", "widthMm"]
 
     @field_validator('mode')
     def mode_validate_enum(cls, value):
@@ -110,6 +111,7 @@ class PrinterBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "accessMode": obj.get("accessMode"),
             "anonymize": obj.get("anonymize"),
             "createdAt": obj.get("createdAt"),
             "dpmm": obj.get("dpmm"),

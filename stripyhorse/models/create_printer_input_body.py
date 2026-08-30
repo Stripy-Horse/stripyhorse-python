@@ -28,6 +28,7 @@ class CreatePrinterInputBody(BaseModel):
     """
     CreatePrinterInputBody
     """ # noqa: E501
+    access_mode: Optional[StrictStr] = Field(default=None, description="Who may print to the TCP port; default open. Use token from CI, where the source address is different every run.", alias="accessMode")
     anonymize: Optional[StrictBool] = Field(default=None, description="Mask PII and strip graphics from every captured frame")
     dpmm: Optional[StrictInt] = Field(default=None, description="Print density in dots/mm (152/203/300/600 dpi); default 8")
     height_mm: Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="heightMm")
@@ -36,7 +37,17 @@ class CreatePrinterInputBody(BaseModel):
     preset: Optional[StrictStr] = Field(default=None, description="Named label size in inches; alternative to widthMm/heightMm")
     webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
     width_mm: Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="widthMm")
-    __properties: ClassVar[List[str]] = ["anonymize", "dpmm", "heightMm", "mode", "name", "preset", "webhookUrl", "widthMm"]
+    __properties: ClassVar[List[str]] = ["accessMode", "anonymize", "dpmm", "heightMm", "mode", "name", "preset", "webhookUrl", "widthMm"]
+
+    @field_validator('access_mode')
+    def access_mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['', 'open', 'token', 'ip']):
+            raise ValueError("must be one of enum values ('', 'open', 'token', 'ip')")
+        return value
 
     @field_validator('dpmm')
     def dpmm_validate_enum(cls, value):
@@ -119,6 +130,7 @@ class CreatePrinterInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "accessMode": obj.get("accessMode"),
             "anonymize": obj.get("anonymize"),
             "dpmm": obj.get("dpmm"),
             "heightMm": obj.get("heightMm"),

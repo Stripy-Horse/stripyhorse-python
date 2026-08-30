@@ -35,6 +35,7 @@ class TestCreatePrinterInputBody(unittest.TestCase):
         model = CreatePrinterInputBody()
         if include_optional:
             return CreatePrinterInputBody(
+                access_mode = '',
                 anonymize = True,
                 dpmm = 6,
                 height_mm = 0,

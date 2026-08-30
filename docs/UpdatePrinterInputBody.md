@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**access_mode** | **str** |  | [optional] 
 **anonymize** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **webhook_url** | **str** |  | [optional] 

@@ -326,7 +326,7 @@ class SimulatorApi:
     ) -> PrinterBody:
         """Create a virtual printer
 
-        Free tier: one ephemeral printer (24h idle TTL). Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
+        Free tier: one ephemeral printer, expiring after 4h with no jobs. Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
 
         :param create_printer_input_body: (required)
         :type create_printer_input_body: CreatePrinterInputBody
@@ -394,7 +394,7 @@ class SimulatorApi:
     ) -> ApiResponse[PrinterBody]:
         """Create a virtual printer
 
-        Free tier: one ephemeral printer (24h idle TTL). Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
+        Free tier: one ephemeral printer, expiring after 4h with no jobs. Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
 
         :param create_printer_input_body: (required)
         :type create_printer_input_body: CreatePrinterInputBody
@@ -462,7 +462,7 @@ class SimulatorApi:
     ) -> RESTResponseType:
         """Create a virtual printer
 
-        Free tier: one ephemeral printer (24h idle TTL). Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
+        Free tier: one ephemeral printer, expiring after 4h with no jobs. Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
 
         :param create_printer_input_body: (required)
         :type create_printer_input_body: CreatePrinterInputBody

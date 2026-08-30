@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,10 +27,21 @@ class UpdatePrinterInputBody(BaseModel):
     """
     UpdatePrinterInputBody
     """ # noqa: E501
+    access_mode: Optional[StrictStr] = Field(default=None, alias="accessMode")
     anonymize: Optional[StrictBool] = None
     name: Optional[StrictStr] = None
     webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
-    __properties: ClassVar[List[str]] = ["anonymize", "name", "webhookUrl"]
+    __properties: ClassVar[List[str]] = ["accessMode", "anonymize", "name", "webhookUrl"]
+
+    @field_validator('access_mode')
+    def access_mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['open', 'token', 'ip']):
+            raise ValueError("must be one of enum values ('open', 'token', 'ip')")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,6 +94,7 @@ class UpdatePrinterInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "accessMode": obj.get("accessMode"),
             "anonymize": obj.get("anonymize"),
             "name": obj.get("name"),
             "webhookUrl": obj.get("webhookUrl")
