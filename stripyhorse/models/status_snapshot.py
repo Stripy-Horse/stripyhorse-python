@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from stripyhorse.models.faults import Faults
+from stripyhorse.models.held_job import HeldJob
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -34,10 +35,11 @@ class StatusSnapshot(BaseModel):
     friendly_name: StrictStr = Field(description="device.friendly_name override; empty means unset", alias="friendlyName")
     label_length_dots: StrictInt = Field(alias="labelLengthDots")
     odometer: StrictInt
+    queue: Optional[List[HeldJob]]
     speed_ips: StrictStr = Field(description="media.speed setting, inches/second", alias="speedIps")
     tear_off: StrictStr = Field(description="ezpl.tear_off setting, dots", alias="tearOff")
     width_dots: StrictInt = Field(alias="widthDots")
-    __properties: ClassVar[List[str]] = ["darkness", "faults", "formatsInBuffer", "friendlyName", "labelLengthDots", "odometer", "speedIps", "tearOff", "widthDots"]
+    __properties: ClassVar[List[str]] = ["darkness", "faults", "formatsInBuffer", "friendlyName", "labelLengthDots", "odometer", "queue", "speedIps", "tearOff", "widthDots"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -81,6 +83,18 @@ class StatusSnapshot(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of faults
         if self.faults:
             _dict['faults'] = self.faults.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in queue (list)
+        _items = []
+        if self.queue:
+            for _item_queue in self.queue:
+                if _item_queue:
+                    _items.append(_item_queue.to_dict())
+            _dict['queue'] = _items
+        # set to None if queue (nullable) is None
+        # and model_fields_set contains the field
+        if self.queue is None and "queue" in self.model_fields_set:
+            _dict['queue'] = None
+
         return _dict
 
     @classmethod
@@ -99,6 +113,7 @@ class StatusSnapshot(BaseModel):
             "friendlyName": obj.get("friendlyName"),
             "labelLengthDots": obj.get("labelLengthDots"),
             "odometer": obj.get("odometer"),
+            "queue": [HeldJob.from_dict(_item) for _item in obj["queue"]] if obj.get("queue") is not None else None,
             "speedIps": obj.get("speedIps"),
             "tearOff": obj.get("tearOff"),
             "widthDots": obj.get("widthDots")

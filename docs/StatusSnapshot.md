@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **friendly_name** | **str** | device.friendly_name override; empty means unset | 
 **label_length_dots** | **int** |  | 
 **odometer** | **int** |  | 
+**queue** | [**List[HeldJob]**](HeldJob.md) |  | 
 **speed_ips** | **str** | media.speed setting, inches/second | 
 **tear_off** | **str** | ezpl.tear_off setting, dots | 
 **width_dots** | **int** |  | 

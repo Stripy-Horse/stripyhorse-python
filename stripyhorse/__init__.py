@@ -45,6 +45,7 @@ __all__ = [
     "ErrorModel",
     "Faults",
     "Finding",
+    "HeldJob",
     "HostStatus",
     "HostStatusInputBody",
     "HostStatusOutputBody",
@@ -108,6 +109,7 @@ from stripyhorse.models.error_detail import ErrorDetail as ErrorDetail
 from stripyhorse.models.error_model import ErrorModel as ErrorModel
 from stripyhorse.models.faults import Faults as Faults
 from stripyhorse.models.finding import Finding as Finding
+from stripyhorse.models.held_job import HeldJob as HeldJob
 from stripyhorse.models.host_status import HostStatus as HostStatus
 from stripyhorse.models.host_status_input_body import HostStatusInputBody as HostStatusInputBody
 from stripyhorse.models.host_status_output_body import HostStatusOutputBody as HostStatusOutputBody

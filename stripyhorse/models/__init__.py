@@ -26,6 +26,7 @@ from stripyhorse.models.error_detail import ErrorDetail
 from stripyhorse.models.error_model import ErrorModel
 from stripyhorse.models.faults import Faults
 from stripyhorse.models.finding import Finding
+from stripyhorse.models.held_job import HeldJob
 from stripyhorse.models.host_status import HostStatus
 from stripyhorse.models.host_status_input_body import HostStatusInputBody
 from stripyhorse.models.host_status_output_body import HostStatusOutputBody

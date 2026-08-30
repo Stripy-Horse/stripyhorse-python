@@ -59,6 +59,12 @@ class TestListPrintersOutputBody(unittest.TestCase):
                             friendly_name = '', 
                             label_length_dots = 56, 
                             odometer = 56, 
+                            queue = [
+                                stripyhorse.models.held_job.HeldJob(
+                                    bytes = 56, 
+                                    received_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                                    source = '', )
+                                ], 
                             speed_ips = '', 
                             tear_off = '', 
                             width_dots = 56, ), 
@@ -96,6 +102,12 @@ class TestListPrintersOutputBody(unittest.TestCase):
                             friendly_name = '', 
                             label_length_dots = 56, 
                             odometer = 56, 
+                            queue = [
+                                stripyhorse.models.held_job.HeldJob(
+                                    bytes = 56, 
+                                    received_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                                    source = '', )
+                                ], 
                             speed_ips = '', 
                             tear_off = '', 
                             width_dots = 56, ), 

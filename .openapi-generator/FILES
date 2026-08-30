@@ -19,6 +19,7 @@ docs/ErrorDetail.md
 docs/ErrorModel.md
 docs/Faults.md
 docs/Finding.md
+docs/HeldJob.md
 docs/HostStatus.md
 docs/HostStatusInputBody.md
 docs/HostStatusOutputBody.md
@@ -81,6 +82,7 @@ stripyhorse/models/error_detail.py
 stripyhorse/models/error_model.py
 stripyhorse/models/faults.py
 stripyhorse/models/finding.py
+stripyhorse/models/held_job.py
 stripyhorse/models/host_status.py
 stripyhorse/models/host_status_input_body.py
 stripyhorse/models/host_status_output_body.py
@@ -129,6 +131,7 @@ test/test_error_detail.py
 test/test_error_model.py
 test/test_faults.py
 test/test_finding.py
+test/test_held_job.py
 test/test_host_status.py
 test/test_host_status_input_body.py
 test/test_host_status_output_body.py
