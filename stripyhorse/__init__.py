@@ -55,6 +55,7 @@ __all__ = [
     "JobSummary",
     "ListJobsOutputBody",
     "ListPrintersOutputBody",
+    "MediaInputBody",
     "PreflightInputBody",
     "PreflightOutputBody",
     "PrinterBody",
@@ -68,6 +69,7 @@ __all__ = [
     "StateOutputBody",
     "StatusField",
     "StatusSnapshot",
+    "Supplies",
     "UnicodeInputBody",
     "UnicodeOutputBody",
     "UpdatePrinterInputBody",
@@ -119,6 +121,7 @@ from stripyhorse.models.job_output_body import JobOutputBody as JobOutputBody
 from stripyhorse.models.job_summary import JobSummary as JobSummary
 from stripyhorse.models.list_jobs_output_body import ListJobsOutputBody as ListJobsOutputBody
 from stripyhorse.models.list_printers_output_body import ListPrintersOutputBody as ListPrintersOutputBody
+from stripyhorse.models.media_input_body import MediaInputBody as MediaInputBody
 from stripyhorse.models.preflight_input_body import PreflightInputBody as PreflightInputBody
 from stripyhorse.models.preflight_output_body import PreflightOutputBody as PreflightOutputBody
 from stripyhorse.models.printer_body import PrinterBody as PrinterBody
@@ -132,6 +135,7 @@ from stripyhorse.models.stamp_output_body import StampOutputBody as StampOutputB
 from stripyhorse.models.state_output_body import StateOutputBody as StateOutputBody
 from stripyhorse.models.status_field import StatusField as StatusField
 from stripyhorse.models.status_snapshot import StatusSnapshot as StatusSnapshot
+from stripyhorse.models.supplies import Supplies as Supplies
 from stripyhorse.models.unicode_input_body import UnicodeInputBody as UnicodeInputBody
 from stripyhorse.models.unicode_output_body import UnicodeOutputBody as UnicodeOutputBody
 from stripyhorse.models.update_printer_input_body import UpdatePrinterInputBody as UpdatePrinterInputBody

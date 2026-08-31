@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**get_printer**](SimulatorApi.md#get_printer) | **GET** /v1/printers/{printerId} | Get a printer with live state
 [**list_jobs**](SimulatorApi.md#list_jobs) | **GET** /v1/printers/{printerId}/jobs | List captured jobs, newest first
 [**list_printers**](SimulatorApi.md#list_printers) | **GET** /v1/printers | List your printers
+[**load_printer_media**](SimulatorApi.md#load_printer_media) | **POST** /v1/printers/{printerId}/media | Fit a fresh roll and ribbon
 [**reset_printer**](SimulatorApi.md#reset_printer) | **POST** /v1/printers/{printerId}/reset | Clear all faults and flush held jobs
 [**set_printer_faults**](SimulatorApi.md#set_printer_faults) | **POST** /v1/printers/{printerId}/faults | Inject or clear fault conditions
 [**update_printer**](SimulatorApi.md#update_printer) | **PATCH** /v1/printers/{printerId} | Rename a printer or set its webhook URL
@@ -768,6 +769,95 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **load_printer_media**
+> StateOutputBody load_printer_media(printer_id, media_input_body)
+
+Fit a fresh roll and ribbon
+
+A loaded roll runs down as labels print and raises paper out when it is spent, which holds everything sent after it. Zero is an endless roll, which is the default and never runs out.
+
+### Example
+
+* Api Key Authentication (headerKey):
+* Bearer (sh_live_…) Authentication (bearerKey):
+
+```python
+import stripyhorse
+from stripyhorse.models.media_input_body import MediaInputBody
+from stripyhorse.models.state_output_body import StateOutputBody
+from stripyhorse.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stripyhorse.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stripyhorse.Configuration(
+    host = "https://api.stripyhorse.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: headerKey
+configuration.api_key['headerKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['headerKey'] = 'Bearer'
+
+# Configure Bearer authorization (sh_live_…): bearerKey
+configuration = stripyhorse.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with stripyhorse.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stripyhorse.SimulatorApi(api_client)
+    printer_id = 'printer_id_example' # str | 
+    media_input_body = stripyhorse.MediaInputBody() # MediaInputBody | 
+
+    try:
+        # Fit a fresh roll and ribbon
+        api_response = api_instance.load_printer_media(printer_id, media_input_body)
+        print("The response of SimulatorApi->load_printer_media:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SimulatorApi->load_printer_media: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **printer_id** | **str**|  | 
+ **media_input_body** | [**MediaInputBody**](MediaInputBody.md)|  | 
+
+### Return type
+
+[**StateOutputBody**](StateOutputBody.md)
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json, application/problem+json
 
 ### HTTP response details

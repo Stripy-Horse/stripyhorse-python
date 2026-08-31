@@ -29,6 +29,7 @@ docs/JobOutputBody.md
 docs/JobSummary.md
 docs/ListJobsOutputBody.md
 docs/ListPrintersOutputBody.md
+docs/MediaInputBody.md
 docs/PreflightInputBody.md
 docs/PreflightOutputBody.md
 docs/PrinterBody.md
@@ -45,6 +46,7 @@ docs/StampOutputBody.md
 docs/StateOutputBody.md
 docs/StatusField.md
 docs/StatusSnapshot.md
+docs/Supplies.md
 docs/UnicodeInputBody.md
 docs/UnicodeOutputBody.md
 docs/UpdatePrinterInputBody.md
@@ -92,6 +94,7 @@ stripyhorse/models/job_output_body.py
 stripyhorse/models/job_summary.py
 stripyhorse/models/list_jobs_output_body.py
 stripyhorse/models/list_printers_output_body.py
+stripyhorse/models/media_input_body.py
 stripyhorse/models/preflight_input_body.py
 stripyhorse/models/preflight_output_body.py
 stripyhorse/models/printer_body.py
@@ -105,6 +108,7 @@ stripyhorse/models/stamp_output_body.py
 stripyhorse/models/state_output_body.py
 stripyhorse/models/status_field.py
 stripyhorse/models/status_snapshot.py
+stripyhorse/models/supplies.py
 stripyhorse/models/unicode_input_body.py
 stripyhorse/models/unicode_output_body.py
 stripyhorse/models/update_printer_input_body.py
@@ -141,6 +145,7 @@ test/test_job_output_body.py
 test/test_job_summary.py
 test/test_list_jobs_output_body.py
 test/test_list_printers_output_body.py
+test/test_media_input_body.py
 test/test_preflight_input_body.py
 test/test_preflight_output_body.py
 test/test_printer_body.py
@@ -157,6 +162,7 @@ test/test_stamp_output_body.py
 test/test_state_output_body.py
 test/test_status_field.py
 test/test_status_snapshot.py
+test/test_supplies.py
 test/test_unicode_input_body.py
 test/test_unicode_output_body.py
 test/test_update_printer_input_body.py

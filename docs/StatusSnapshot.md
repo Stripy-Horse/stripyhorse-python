@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **odometer** | **int** |  | 
 **queue** | [**List[HeldJob]**](HeldJob.md) |  | 
 **speed_ips** | **str** | media.speed setting, inches/second | 
+**supplies** | [**Supplies**](Supplies.md) | What is left on the roll; zero loaded means endless | 
 **tear_off** | **str** | ezpl.tear_off setting, dots | 
 **width_dots** | **int** |  | 
 

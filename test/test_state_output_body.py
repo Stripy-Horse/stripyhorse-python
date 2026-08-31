@@ -55,6 +55,7 @@ class TestStateOutputBody(unittest.TestCase):
                             source = '', )
                         ], 
                     speed_ips = '', 
+                    supplies = null, 
                     tear_off = '', 
                     width_dots = 56, )
             )
@@ -80,6 +81,7 @@ class TestStateOutputBody(unittest.TestCase):
                             source = '', )
                         ], 
                     speed_ips = '', 
+                    supplies = null, 
                     tear_off = '', 
                     width_dots = 56, ),
         )

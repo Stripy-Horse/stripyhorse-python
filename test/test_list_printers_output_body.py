@@ -67,6 +67,7 @@ class TestListPrintersOutputBody(unittest.TestCase):
                                     source = '', )
                                 ], 
                             speed_ips = '', 
+                            supplies = null, 
                             tear_off = '', 
                             width_dots = 56, ), 
                         tcp = stripyhorse.models.printer_body_tcp_struct.PrinterBodyTCPStruct(
@@ -111,6 +112,7 @@ class TestListPrintersOutputBody(unittest.TestCase):
                                     source = '', )
                                 ], 
                             speed_ips = '', 
+                            supplies = null, 
                             tear_off = '', 
                             width_dots = 56, ), 
                         tcp = stripyhorse.models.printer_body_tcp_struct.PrinterBodyTCPStruct(

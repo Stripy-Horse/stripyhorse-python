@@ -54,6 +54,11 @@ class TestStatusSnapshot(unittest.TestCase):
                         source = '', )
                     ],
                 speed_ips = '',
+                supplies = stripyhorse.models.supplies.Supplies(
+                    labels_left = 56, 
+                    labels_loaded = 56, 
+                    ribbon_mm_left = 56, 
+                    ribbon_mm_loaded = 56, ),
                 tear_off = '',
                 width_dots = 56
             )
@@ -78,6 +83,11 @@ class TestStatusSnapshot(unittest.TestCase):
                         source = '', )
                     ],
                 speed_ips = '',
+                supplies = stripyhorse.models.supplies.Supplies(
+                    labels_left = 56, 
+                    labels_loaded = 56, 
+                    ribbon_mm_left = 56, 
+                    ribbon_mm_loaded = 56, ),
                 tear_off = '',
                 width_dots = 56,
         )

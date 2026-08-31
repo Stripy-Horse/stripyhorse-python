@@ -89,6 +89,13 @@ class TestSimulatorApi(unittest.TestCase):
         """
         pass
 
+    def test_load_printer_media(self) -> None:
+        """Test case for load_printer_media
+
+        Fit a fresh roll and ribbon
+        """
+        pass
+
     def test_reset_printer(self) -> None:
         """Test case for reset_printer
 

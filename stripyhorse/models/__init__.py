@@ -36,6 +36,7 @@ from stripyhorse.models.job_output_body import JobOutputBody
 from stripyhorse.models.job_summary import JobSummary
 from stripyhorse.models.list_jobs_output_body import ListJobsOutputBody
 from stripyhorse.models.list_printers_output_body import ListPrintersOutputBody
+from stripyhorse.models.media_input_body import MediaInputBody
 from stripyhorse.models.preflight_input_body import PreflightInputBody
 from stripyhorse.models.preflight_output_body import PreflightOutputBody
 from stripyhorse.models.printer_body import PrinterBody
@@ -49,6 +50,7 @@ from stripyhorse.models.stamp_output_body import StampOutputBody
 from stripyhorse.models.state_output_body import StateOutputBody
 from stripyhorse.models.status_field import StatusField
 from stripyhorse.models.status_snapshot import StatusSnapshot
+from stripyhorse.models.supplies import Supplies
 from stripyhorse.models.unicode_input_body import UnicodeInputBody
 from stripyhorse.models.unicode_output_body import UnicodeOutputBody
 from stripyhorse.models.update_printer_input_body import UpdatePrinterInputBody
