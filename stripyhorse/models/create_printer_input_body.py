@@ -35,9 +35,10 @@ class CreatePrinterInputBody(BaseModel):
     mode: Optional[StrictStr] = None
     name: Annotated[str, Field(min_length=1, strict=True)]
     preset: Optional[StrictStr] = Field(default=None, description="Named label size in inches; alternative to widthMm/heightMm")
+    shared_port: Optional[StrictBool] = Field(default=None, description="Put this printer on the shared router port instead of spending one of the plan's dedicated ports. It is then reached by naming it in the stream, a ZPL comment carrying the ingest token, which suits CI.", alias="sharedPort")
     webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
     width_mm: Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="widthMm")
-    __properties: ClassVar[List[str]] = ["accessMode", "anonymize", "dpmm", "heightMm", "mode", "name", "preset", "webhookUrl", "widthMm"]
+    __properties: ClassVar[List[str]] = ["accessMode", "anonymize", "dpmm", "heightMm", "mode", "name", "preset", "sharedPort", "webhookUrl", "widthMm"]
 
     @field_validator('access_mode')
     def access_mode_validate_enum(cls, value):
@@ -137,6 +138,7 @@ class CreatePrinterInputBody(BaseModel):
             "mode": obj.get("mode"),
             "name": obj.get("name"),
             "preset": obj.get("preset"),
+            "sharedPort": obj.get("sharedPort"),
             "webhookUrl": obj.get("webhookUrl"),
             "widthMm": obj.get("widthMm")
         })

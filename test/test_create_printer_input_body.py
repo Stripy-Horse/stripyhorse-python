@@ -42,6 +42,7 @@ class TestCreatePrinterInputBody(unittest.TestCase):
                 mode = '',
                 name = '0',
                 preset = '4x6',
+                shared_port = True,
                 webhook_url = '',
                 width_mm = 0
             )

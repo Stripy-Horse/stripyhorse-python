@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **mode** | **str** |  | [optional] 
 **name** | **str** |  | 
 **preset** | **str** | Named label size in inches; alternative to widthMm/heightMm | [optional] 
+**shared_port** | **bool** | Put this printer on the shared router port instead of spending one of the plan&#39;s dedicated ports. It is then reached by naming it in the stream, a ZPL comment carrying the ingest token, which suits CI. | [optional] 
 **webhook_url** | **str** |  | [optional] 
 **width_mm** | **float** |  | [optional] 
 
