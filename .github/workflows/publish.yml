@@ -14,14 +14,18 @@ on:
     tags: ["v*"]
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   publish:
     runs-on: ubuntu-latest
     environment: pypi
+    # Job-level permissions REPLACE the workflow-level block rather than
+    # merging with it, so contents:read has to be repeated here. Without
+    # it actions/checkout cannot read its own repository while the repo is
+    # private, and the job dies at the checkout with "Repository not
+    # found", which reads like the repo is gone rather than like a
+    # permissions block.
     permissions:
+      contents: read
       id-token: write # mints the OIDC token PyPI checks
     steps:
       - uses: actions/checkout@v4
