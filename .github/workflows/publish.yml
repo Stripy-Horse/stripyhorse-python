@@ -1,0 +1,39 @@
+name: Publish to PyPI
+
+# Releases are cut by the main repo: bumping sdk/VERSION there makes its
+# sdk-sync workflow regenerate this repo and push the v<VERSION> tag, and
+# that tag push runs this. Nothing here is hand-triggered in the normal
+# case, and nothing publishes off master.
+#
+# Auth is PyPI trusted publishing (OIDC), so there is no API token to
+# store or rotate: PyPI is configured to trust this repo and this
+# workflow file by name. Renaming this file breaks publishing.
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write # mints the OIDC token PyPI checks
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build sdist and wheel
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - name: Check the artifacts render on PyPI
+        run: |
+          python -m pip install --upgrade twine
+          python -m twine check dist/*
+      - uses: pypa/gh-action-pypi-publish@release/v1
